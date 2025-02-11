@@ -363,16 +363,16 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 "eRASS1_VLIM_CLUSTERS_S4_CROSS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p05-HpxMask.fits" \
 11.5 0.05 0.35
 
-cd
-rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/eRASS1_VLIM_CLUSTERS_S?_CROSS_LS10_VLIM_ANY_*-wprp-pimax100-bin0p05-HpxMask.fits wwwDir/stuff/CF/
-rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/*wprp-pimax100-bin0p05-HpxMask.fits wwwDir/stuff/CF/
-rsync -avz /home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples/AUTOCORR_*-wprp-pimax100-bin0p05.fits wwwDir/stuff/CF/
+cd /home/comparat/sf_Shared/data/legacysurvey/dr10/sweep/BGS_VLIM_Mstar
+rsync -avz comparat@ds43:/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/eRASS1_VLIM_CLUSTERS_S?_CROSS_LS10_VLIM_ANY_*-wprp-pimax100-bin0p05-HpxMask.fits .
+rsync -avz comparat@ds43:/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/*wprp-pimax100-bin0p05-HpxMask.fits .
+rsync -avz comparat@ds43:/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples/AUTOCORR_*-wprp-pimax100-bin0p05.fits .
 
 cd wwwDir/stuff
 tar -czf test2.tar.gz CF
 
-
-
+ls *-wprp-pimax100-bin0p05-HpxMask.fits
+ls *-wprp-pimax100-bin0p05.fits
 
 
 # continue with
