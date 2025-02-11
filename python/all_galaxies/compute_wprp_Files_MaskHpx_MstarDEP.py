@@ -19,21 +19,19 @@ from Corrfunc.io import read_catalog
 from Corrfunc.utils import convert_rp_pi_counts_to_wp
 from Corrfunc.theory.DD import DD
 
+print(sys.argv)
+print(len(sys.argv))
 pimax = int(sys.argv[1])
 topdir    = sys.argv[2]
 p2_data   = sys.argv[3]
 p2_random = sys.argv[4]
 p_2_2PCF  = os.path.join(topdir, sys.argv[5])
-basename = sys.argv[5].split('-')[0]
+basename = sys.argv[5].split('-')[0][9:]
 Ms_min = float(sys.argv[6])
+z_min = float(sys.argv[7])
+z_max = float(sys.argv[8])
 
-def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_file='test.fits', CV_frac=0.01, pimax = 100.0, N_JK=20 ):
-	"""
-	wprp direct estimate
-	path_2_data : path to the catalogue to correlate
-	path_2_random
-	"""
-	#
+def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_file='test.fits', pimax = 100.0 ):
 	CZ = Z * speed_light
 	rand_CZ = rand_Z * speed_light
 	N = len(RA)
@@ -50,18 +48,16 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_fil
 	DD_counts = DDrppi_mocks(autocorr, cosmology, nthreads, pimax, bins,
 								np.array(list(RA)).astype('float'),
 								np.array(list(DEC)).astype('float'),
-								np.array(list(CZ)).astype('float') )#, is_comoving_dist=True)
-	#print('DD',DD_counts['npairs'], DD_counts['npairs'].shape)
+								np.array(list(CZ)).astype('float'))
 	# Auto pairs counts in DR
 	autocorr=0
 	DR_counts = DDrppi_mocks(autocorr, cosmology, nthreads, pimax, bins,
 							np.array(list(RA)).astype('float'),
 							np.array(list(DEC)).astype('float'),
 							np.array(list(CZ)).astype('float'),
-							RA2=rand_RA.astype('float'),
+							RA2 =rand_RA.astype('float'),
 							DEC2=rand_DEC.astype('float'),
-							CZ2=rand_CZ.astype('float'))
-	#print('DR',DR_counts['npairs'])
+							CZ2 =rand_CZ.astype('float'))
 	# Auto pairs counts in RR
 	autocorr=1
 	RR_counts = DDrppi_mocks(autocorr, cosmology, nthreads, pimax, bins,
@@ -79,29 +75,6 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_fil
 	t.add_column(Column(data = np.ones_like(x) * N, name='N_data', unit=''  ) )
 	t.add_column(Column(data = np.ones_like(x) * rand_N, name='N_random', unit=''  ) )
 	t.add_column(Column(data = np.ones_like(x) * pimax, name='pimax', unit=''  ) )
-	#t.add_column(Column(data = np.ones_like(x) * CV_frac, name='CV_frac', unit=''  ) )
-	# repeat when removing random 10%
-	#wprp_JK = np.zeros((N_JK, len(wp)))
-	#for jj in np.arange(N_JK):
-		#s1=(np.random.random(len(RA))<0.9)
-		#ra1, dec1, cz1 = np.array(list(RA)).astype('float')[s1], np.array(list(DEC)).astype('float')[s1], np.array(list(CZ)).astype('float')[s1]
-		## Auto pairs counts in DD
-		#autocorr=1
-		#DD_counts = DDrppi_mocks(autocorr, cosmology, nthreads, pimax, bins,  ra1, dec1, cz1)
-		## Auto pairs counts in DR
-		#autocorr=0
-		#DR_counts = DDrppi_mocks(autocorr, cosmology, nthreads, pimax, bins, ra1, dec1, cz1, RA2=rand_RA.astype('float'), DEC2=rand_DEC.astype('float'), CZ2=rand_CZ.astype('float'))
-		## Auto pairs counts in RR
-		#autocorr=1
-		#RR_counts = DDrppi_mocks(autocorr, cosmology, nthreads, pimax, bins, rand_RA.astype('float'), rand_DEC.astype('float'), rand_CZ.astype('float'))
-		## All the pair counts are done, get the angular correlation function
-		#wprp_JK[jj] = convert_rp_pi_counts_to_wp(N, N, rand_N, rand_N, DD_counts, DR_counts, DR_counts, RR_counts, nbins, pimax)
-	#print ( "wprp_JK.mean(axis=0)", wprp_JK.mean(axis=0).shape, wprp_JK.mean(axis=0),  wprp_JK.mean(axis=0) / wp  )
-	#print ( "wprp_JK.std(axis=0) ", wprp_JK.std(axis=0) .shape, wprp_JK.std(axis=0),  wprp_JK.std(axis=0) / wp  )
-	#print ( "wp                ", wp                .shape, wp                  )
-	#t['wprp_JK'] = wprp_JK
-	#t.add_column(Column(data = wprp_JK.mean(axis=0), name='wprp_JK_mean', unit=''  ) )
-	#t.add_column(Column(data = wprp_JK.std(axis=0), name='wprp_JK_std', unit=''  ) )
 	print(out_file)
 	t.write(out_file, overwrite=True, format='fits')
 	print(out_file, time.time()-t0, 's')
@@ -144,7 +117,9 @@ RRR = RRR[sR]
 print('after masking & Mmin selection ND, NR = ', len(DDD), len(RRR))
 if os.path.isfile(p_2_2PCF)==False :
 	try:
-		tabulate_wprp_clustering_noW(DDD['RA'], DDD['DEC'], DDD['BEST_Z'], RRR['RA'] , RRR['DEC'], RRR['Z'],  out_file=p_2_2PCF, CV_frac=0.01, pimax = 100.0, N_JK = 2 )
+		tabulate_wprp_clustering_noW(
+			DDD['RA'], DDD['DEC'], DDD['BEST_Z'], RRR['RA'] , RRR['DEC'], RRR['Z'],
+			out_file=p_2_2PCF, pimax = 100.0)
 	except(RuntimeError):
 		print('RuntimeError')
 
