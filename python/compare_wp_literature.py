@@ -256,6 +256,36 @@ plt.clf()
 print(p2_fig)
 
 
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M110-ANY-BC-RS-S2-clusters-ratio.png')
+plt.figure(13, (6,6))
+t_ref = BGS["ANY_11.0"]
+#plt.plot(t_ref['rp_mid'], t_ref['wprp'], lw=4,  ls='solid', label='11.0<M*<12, N='+str(int(t_wp['N_data'][0])), color='grey')
+t_wp = BGS["RS_11.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='RS, Gal x Gal', color='darkred')
+t_wp = BGS["BC_11.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='BC, Gal x Gal', color='darkblue')
+
+#t_wp = CLU["S2_0.05_z_0.35"]
+#plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=3,  ls='solid', label='Clusters Seppi 2024, S2 LX>43.3, N='+str(int(t_wp['N_data'][0])), color='orange')
+t_ref = CxG["S2_ANY_11.0"]
+#plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=2,  ls='dashed', label='Galaxies x Clusters ', color='grey')
+t_wp = CxG["S2_BC_11.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='BC Gal x Clu ', color='darkblue')
+t_wp = CxG["S2_RS_11.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='RS Gal x Clu ', color='darkred')
+plt.axhline(1,color='k', ls='dotted')
+plt.ylim((0, 2))
+plt.xlim((0.01, 60))
+plt.xscale('log')
+#plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$w_p(r_p)/w^{REF}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.legend(loc=1, fontsize=10, title='11.0<M*<12, S2 LX>43.3')
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
+
 # plot wprp
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M105-ANY-BC-RS-S1-clusters.png')
 plt.figure(13, (6,6))
@@ -288,6 +318,33 @@ plt.clf()
 print(p2_fig)
 
 
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M105-ANY-BC-RS-S1-clusters-ratio.png')
+plt.figure(13, (6,6))
+t_ref = BGS["ANY_10.5"]
+t_wp = BGS["RS_10.5"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='RS, Gal x Gal', color='darkred')
+t_wp = BGS["BC_10.5"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='BC, Gal x Gal ', color='darkblue')
+
+t_ref = CxG["S1_ANY_10.5"]
+t_wp = CxG["S1_BC_10.5"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='BC Gal x Clu ', color='darkblue')
+t_wp = CxG["S1_RS_10.5"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='RS Gal x Clu ', color='darkred')
+
+plt.axhline(1,color='k', ls='dotted')
+plt.ylim((0, 2))
+plt.xlim((0.01, 60))
+plt.xscale('log')
+#plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$w_p(r_p)/w^{REF}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.legend(loc=1, fontsize=10, title='10.5<M*<12, S1 LX>43.1')
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
+
 # plot wprp
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M100-ANY-BC-RS-S0-clusters.png')
 plt.figure(13, (6,6))
@@ -319,6 +376,33 @@ plt.savefig(p2_fig)
 plt.clf()
 print(p2_fig)
 
+
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M100-ANY-BC-RS-S0-clusters-ratio.png')
+plt.figure(13, (6,6))
+t_ref = BGS["ANY_10.0"]
+t_wp = BGS["RS_10.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='RS, Gal x Gal', color='darkred')
+t_wp = BGS["BC_10.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='BC, Gal x Gal ', color='darkblue')
+
+t_ref = CxG["S0_ANY_10.0"]
+t_wp = CxG["S0_BC_10.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='BC Gal x Clu ', color='darkblue')
+t_wp = CxG["S0_RS_10.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='RS Gal x Clu ', color='darkred')
+
+plt.axhline(1,color='k', ls='dotted')
+plt.ylim((0, 2))
+plt.xlim((0.01, 60))
+plt.xscale('log')
+#plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$w_p(r_p)/w^{REF}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.legend(loc=1, fontsize=10, title='10.0<M*<12, S1 LX>42.7')
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
 
 
 
