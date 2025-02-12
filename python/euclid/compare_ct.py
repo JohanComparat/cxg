@@ -54,11 +54,13 @@ cosmo = cosmoUNIT
 
 
 fig_dir  ='../../figures/'
+dat_dir  ='../../data/'
 deg_to_rad = np.pi/180.
 
 topdir    = sys.argv[1]
 p2_data   = os.path.join(topdir, sys.argv[2])
-p2_fig  = os.path.join(fig_dir, sys.argv[3])
+p2_fig  = os.path.join(fig_dir, sys.argv[2][:-3]+'png')
+p2_dat  = os.path.join(dat_dir, sys.argv[2][:-3]+'RSdata.npy')
 
 #D2 = Table.read(os.path.join(C_topdir, C_p2_data ), format='fits')
 #R2 = Table.read(os.path.join(C_topdir, C_p2_random ), format='fits')
@@ -77,6 +79,7 @@ x_conversion = cosmo.kpc_proper_per_arcmin(RES['z_bar']).to(u.Mpc/u.rad).value
 #RES['RAND'] = RR_mat
 
 sumsn_100kpc_all = []
+sumsn_1Mpc_all = []
 for jj, c_val in zip(np.arange(len(RES['color_grid'])), RES['color_grid']):
     diff_data = np.hstack(( RES['DATA'][jj][0], RES['DATA'][jj][1:]-RES['DATA'][jj][:-1] ))
     diff_rand = np.hstack(( RES['RAND'][jj][0], RES['RAND'][jj][1:]-RES['RAND'][jj][:-1] ))
@@ -87,12 +90,21 @@ for jj, c_val in zip(np.arange(len(RES['color_grid'])), RES['color_grid']):
     x_pcf_up =  RES['theta_grid']
     x_pcf_lo = np.hstack((0., RES['theta_grid'][:-1]))
     sumsn_100kpc = np.sum(ratio[(~np.isnan(ratio))&(x_pcf*x_conversion<0.1)])
+    sumsn_1Mpc_all.append( np.sum(ratio[(~np.isnan(ratio))&(x_pcf*x_conversion<1)]) )
     #print(sumsn_100kpc)
     sumsn_100kpc_all.append(sumsn_100kpc)
 
 sumsn_100kpc_all = np.array(sumsn_100kpc_all)
+sumsn_1Mpc_all = np.array(sumsn_1Mpc_all)
+SN={}
+SN['sumsn_100kpc_all'] = sumsn_100kpc_all
+SN['sumsn_1Mpc_all'] = sumsn_1Mpc_all
+SN['color_grid'] = RES['color_grid']
+SN['z_bar'] = RES['z_bar']
+np.save(p2_dat, SN)
+print(p2_dat, 'written')
 
-SN_min = 7
+SN_min = 5
 sel = (sumsn_100kpc_all> SN_min)
 print(RES['color_grid'][sel])
 
