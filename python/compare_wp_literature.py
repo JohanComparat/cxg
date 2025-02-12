@@ -286,6 +286,35 @@ plt.savefig(p2_fig)
 plt.clf()
 print(p2_fig)
 
+
+
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M110-ANY-BC-RS-S2-clusters-ratioCROSSAUTO.png')
+plt.figure(13, (6,6))
+t_ref = BGS["ANY_11.0"]
+t_wp = CxG["S2_ANY_11.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='Any', color='grey')
+
+t_ref = BGS["RS_11.0"]
+t_wp = CxG["S2_RS_11.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='RS', color='darkred')
+
+t_ref = BGS["BC_11.0"]
+t_wp = CxG["S2_BC_11.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='BC ', color='darkblue')
+
+plt.ylim((0.1, 100))
+plt.xlim((0.01, 60))
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.legend(loc=1, fontsize=10, title='11.0<M*<12, S2 LX>43.3')
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
+
+
 # plot wprp
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M105-ANY-BC-RS-S1-clusters.png')
 plt.figure(13, (6,6))
@@ -345,6 +374,34 @@ plt.savefig(p2_fig)
 plt.clf()
 print(p2_fig)
 
+
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M105-ANY-BC-RS-S1-clusters-ratioCROSSAUTO.png')
+plt.figure(13, (6,6))
+t_ref = BGS["ANY_10.5"]
+t_wp = CxG["S1_ANY_10.5"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='Any', color='grey')
+
+t_ref = BGS["RS_10.5"]
+t_wp = CxG["S1_RS_10.5"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='RS', color='darkred')
+
+t_ref = BGS["BC_10.5"]
+t_wp = CxG["S1_BC_10.5"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='BC ', color='darkblue')
+
+plt.ylim((0.1, 100))
+plt.xlim((0.01, 60))
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.legend(loc=1, fontsize=10, title='10.5<M*<12, S1 LX>43.1')
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
+
+
 # plot wprp
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M100-ANY-BC-RS-S0-clusters.png')
 plt.figure(13, (6,6))
@@ -398,12 +455,38 @@ plt.xscale('log')
 #plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
 plt.ylabel(r"$w_p(r_p)/w^{REF}_p$, $\pi_{max}=100$ Mpc$/h$")
-plt.legend(loc=1, fontsize=10, title='10.0<M*<12, S1 LX>42.7')
+plt.legend(loc=1, fontsize=10, title='10.0<M*<12, S0 LX>42.7')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
 print(p2_fig)
 
+
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M100-ANY-BC-RS-S0-clusters-ratioCROSSAUTO.png')
+plt.figure(13, (6,6))
+t_ref = BGS["ANY_10.0"]
+t_wp = CxG["S0_ANY_10.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='Any', color='grey')
+
+t_ref = BGS["RS_10.0"]
+t_wp = CxG["S0_RS_10.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='RS', color='darkred')
+
+t_ref = BGS["BC_10.0"]
+t_wp = CxG["S0_BC_10.0"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='BC ', color='darkblue')
+
+plt.ylim((0.1, 100))
+plt.xlim((0.01, 60))
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.legend(loc=1, fontsize=10, title='10.0<M*<12, S0 LX>42.7')
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
 
 
 sys.exit()
