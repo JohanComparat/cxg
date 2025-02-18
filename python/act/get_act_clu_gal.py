@@ -13,6 +13,11 @@ cosmo = Planck18
 
 all_files = np.array(glob.glob("/sps/euclid/OU-LE3/VMPZ-ID/REGREPROC1_R2/CatRed_CL/EUC_MER_PHZ_CA*fits.gz"))
 
+dir_files='/sps/euclid/OU-LE3/VMPZ-ID/Q1/'
+phz_str = 'DpdPhzPfOutputCatalog*xml'
+mer_str = 'DpdMerFinalCatalog-MER*xml'
+
+
 # take the cluster catalog and get all catalog entries within 2 R lambda, ave all matches with the memmatchid set.
 ACT = Table.read('/pbs/home/j/jcomparat/ACT_DR5_cluster-catalog_v1.1_eromapper_catalog.fit')
 #ACT = Table.read('/media/sf_Shared/data/eromapper/data/cal/legacy_dr10_grz_z_v0.3_run/ACT_DR5_cluster-catalog_v1.1_eromapper_catalog.fit.gz')

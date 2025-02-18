@@ -77,9 +77,18 @@ x_conversion = cosmo.kpc_proper_per_arcmin(RES['z_bar']).to(u.Mpc/u.rad).value
 #RES['theta_step'] = radius_step
 #RES['DATA'] = CT_mat
 #RES['RAND'] = RR_mat
-
+N_data_100kpc = []
+N_data_1Mpc   = []
+N_rand_100kpc = []
+N_rand_1Mpc   = []
 sumsn_100kpc_all = []
 sumsn_1Mpc_all = []
+intWTH_100kpc = []
+intWTH_100kpc_up = []
+intWTH_100kpc_lo = []
+intWTH_1Mpc = []
+intWTH_1Mpc_up = []
+intWTH_1Mpc_lo = []
 for jj, c_val in zip(np.arange(len(RES['color_grid'])), RES['color_grid']):
     diff_data = np.hstack(( RES['DATA'][jj][0], RES['DATA'][jj][1:]-RES['DATA'][jj][:-1] ))
     diff_rand = np.hstack(( RES['RAND'][jj][0], RES['RAND'][jj][1:]-RES['RAND'][jj][:-1] ))
@@ -89,26 +98,60 @@ for jj, c_val in zip(np.arange(len(RES['color_grid'])), RES['color_grid']):
     x_pcf = 0.5*( RES['theta_grid']+ np.hstack((0., RES['theta_grid'][:-1])) )
     x_pcf_up =  RES['theta_grid']
     x_pcf_lo = np.hstack((0., RES['theta_grid'][:-1]))
-    sumsn_100kpc = np.sum(ratio[(~np.isnan(ratio))&(x_pcf*x_conversion<0.1)])
-    sumsn_1Mpc_all.append( np.sum(ratio[(~np.isnan(ratio))&(x_pcf*x_conversion<1)]) )
-    #print(sumsn_100kpc)
-    sumsn_100kpc_all.append(sumsn_100kpc)
+    sumsn_100kpc_all.append( np.sum(ratio[(~np.isnan(ratio))&(x_pcf*x_conversion<0.2)]) )
+    sumsn_1Mpc_all.append( np.sum(ratio[(~np.isnan(ratio))&(x_pcf*x_conversion<0.5)]) )
+    N_data_100kpc .append( np.sum( diff_data[(~np.isnan(ratio))&(x_pcf*x_conversion<0.2)]) )
+    N_data_1Mpc   .append( np.sum( diff_data[(~np.isnan(ratio))&(x_pcf*x_conversion<0.5)]) )
+    N_rand_100kpc .append( np.sum( diff_rand[(~np.isnan(ratio))&(x_pcf*x_conversion<0.2)]) )
+    N_rand_1Mpc   .append( np.sum( diff_rand[(~np.isnan(ratio))&(x_pcf*x_conversion<0.5)]) )
+    # integral w(theta)
+    yr2 = y_pcf*np.pi*(x_pcf_up**2-x_pcf_lo**2)
+    yr2_up = (y_pcf + y_pcf_err) * np.pi * ( x_pcf_up**2 - x_pcf_lo**2 )
+    yr2_lo = (y_pcf - y_pcf_err) * np.pi * ( x_pcf_up**2 - x_pcf_lo**2 )
+    intWTH_100kpc   .append( np.sum(yr2   [(~np.isnan(yr2   ))&(x_pcf*x_conversion<0.2)]) )
+    intWTH_100kpc_up.append( np.sum(yr2_up[(~np.isnan(yr2_up))&(x_pcf*x_conversion<0.2)]) )
+    intWTH_100kpc_lo.append( np.sum(yr2_lo[(~np.isnan(yr2_lo))&(x_pcf*x_conversion<0.2)]) )
+    intWTH_1Mpc   .append( np.sum(yr2   [(~np.isnan(yr2   ))&(x_pcf*x_conversion<0.5)]) )
+    intWTH_1Mpc_up.append( np.sum(yr2_up[(~np.isnan(yr2_up))&(x_pcf*x_conversion<0.5)]) )
+    intWTH_1Mpc_lo.append( np.sum(yr2_lo[(~np.isnan(yr2_lo))&(x_pcf*x_conversion<0.5)]) )
 
+N_data_100kpc = np.array(N_data_100kpc )
+N_data_1Mpc   = np.array(N_data_1Mpc   )
+N_rand_100kpc = np.array(N_rand_100kpc )
+N_rand_1Mpc   = np.array(N_rand_1Mpc   )
+
+intWTH_100kpc = np.array(intWTH_100kpc)
+intWTH_100kpc_up = np.array(intWTH_100kpc_up)
+intWTH_100kpc_lo = np.array(intWTH_100kpc_lo)
+intWTH_1Mpc = np.array(intWTH_1Mpc)
+intWTH_1Mpc_up = np.array(intWTH_1Mpc_up)
+intWTH_1Mpc_lo = np.array(intWTH_1Mpc_lo)
 sumsn_100kpc_all = np.array(sumsn_100kpc_all)
 sumsn_1Mpc_all = np.array(sumsn_1Mpc_all)
 SN={}
+SN['N_data_100kpc'] = N_data_100kpc
+SN['N_data_1Mpc']   = N_data_1Mpc
+SN['N_rand_100kpc'] = N_rand_100kpc
+SN['N_rand_1Mpc']   = N_rand_1Mpc
 SN['sumsn_100kpc_all'] = sumsn_100kpc_all
+SN['sumsn_1Mpc_all'] = sumsn_1Mpc_all
+SN['intWTH_100kpc'] = intWTH_100kpc
+SN['intWTH_100kpc_up'] = intWTH_100kpc_up
+SN['intWTH_100kpc_lo'] = intWTH_100kpc_lo
+SN['intWTH_1Mpc'] = intWTH_1Mpc
+SN['intWTH_1Mpc_up'] = intWTH_1Mpc_up
+SN['intWTH_1Mpc_lo'] = intWTH_1Mpc_lo
 SN['sumsn_1Mpc_all'] = sumsn_1Mpc_all
 SN['color_grid'] = RES['color_grid']
 SN['z_bar'] = RES['z_bar']
 np.save(p2_dat, SN)
 print(p2_dat, 'written')
 
-SN_min = 5
-sel = (sumsn_100kpc_all> SN_min)
-print(RES['color_grid'][sel])
+#SN_min = 5
+#sel = (sumsn_100kpc_all> SN_min)
+#print(RES['color_grid'][sel])
 
-#sys.exit()
+sys.exit()
 
 c_val_norm = (RES['color_grid'][sel] -  RES['color_grid'][sel].min() ) / ( RES['color_grid'][sel].max() - RES['color_grid'][sel].min() )
 colors = pl.cm.rainbow(c_val_norm)
@@ -126,7 +169,7 @@ for jj, c_val, cc in zip(np.arange(len(RES['color_grid']))[sel], RES['color_grid
     x_pcf = 0.5*( RES['theta_grid']+ np.hstack((0., RES['theta_grid'][:-1])) )
     x_pcf_up =  RES['theta_grid']
     x_pcf_lo = np.hstack((0., RES['theta_grid'][:-1]))
-    sumsn_100kpc = np.sum(ratio[(~np.isnan(ratio))&(x_pcf*x_conversion<0.1)])
+    sumsn_100kpc = np.sum(ratio[(~np.isnan(ratio))&(x_pcf*x_conversion<0.2)])
     #if sumsn_100kpc>5:
     plt.plot(x_pcf*x_conversion, y_pcf, color=cc)
 

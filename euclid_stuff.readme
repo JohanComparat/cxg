@@ -9,6 +9,7 @@ ccin2p3
 
 data in :
 /sps/euclid/OU-LE3/VMPZ-ID/Q1
+/sps/euclid/OU-LE3/CL
 
 
 50847 files
@@ -46,7 +47,6 @@ https://gitlab.mpcdf.mpg.de/joco/eroconda
 screen -S conda_env
 
 anaconda3/bin/conda env create --file eroconda.yml
-
 
 anaconda3/bin/conda activate eroconda
 pip install ipython
