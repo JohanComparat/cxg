@@ -40,6 +40,14 @@ if os.path.isfile(p_2_OUT)==False:
 
 	print('reading', os.path.join(topdir, p2_data), time.time()-t0, 's')
 	GAL_i = Table.read(os.path.join(topdir, p2_data))
+	#keep = (t["VIS_DET"]==1)&(t["DET_QUALITY_FLAG"]==0) & (t["FLUX_VIS_PSF"]/t["FLUXERR_VIS_PSF"]>=5) & (t["FLAG_VIS"]==0) & (t["FLAG_Y"]==0)&(t["FLAG_G_EXT_DECAM"]==0)&(t["FLAG_R_EXT_DECAM"]==0) & ( -2.5*np.log10(t["FLUX_G_EXT_DECAM_2FWHM_APER"]/t["FLUX_R_EXT_DECAM_2FWHM_APER"]) > -0.5 ) & ( -2.5*np.log10(t["FLUX_VIS_2FWHM_APER"]/t["FLUX_Y_2FWHM_APER"]) > -0.5 )  & ( -2.5*np.log10(t["FLUX_G_EXT_DECAM_2FWHM_APER"]/t["FLUX_R_EXT_DECAM_2FWHM_APER"]) < 3 ) & ( -2.5*np.log10(t["FLUX_VIS_2FWHM_APER"]/t["FLUX_Y_2FWHM_APER"]) < 3 )
+	# & (t["FLUX_Y_2FWHM_APER"]/t["FLUXERR_Y_2FWHM_APER"]>=5) & (t["FLUX_G_EXT_DECAM_2FWHM_APER"]/t["FLUXERR_G_EXT_DECAM_2FWHM_APER"]>=5) & (t["FLUX_R_EXT_DECAM_2FWHM_APER"]/t["FLUXERR_R_EXT_DECAM_2FWHM_APER"]>=5) & ( -2.5*np.log10(t["FLUXERR_G_EXT_DECAM_2FWHM_APER"]/t["FLUXERR_R_EXT_DECAM_2FWHM_APER"]) > -0.5 ) & ( -2.5*np.log10(t["FLUX_VIS_2FWHM_APER"]/t["FLUX_Y_2FWHM_APER"]) > -0.5 )  & ( -2.5*np.log10(t["FLUXERR_G_EXT_DECAM_2FWHM_APER"]/t["FLUXERR_R_EXT_DECAM_2FWHM_APER"]) < 3 ) & ( -2.5*np.log10(t["FLUX_VIS_2FWHM_APER"]/t["FLUX_Y_2FWHM_APER"]) < 3 ) #
+	#GAL_i = t[keep]
+	#GAL_i['gr']=-2.5*np.log10(GAL_i["FLUX_G_EXT_DECAM_2FWHM_APER"]/GAL_i["FLUX_R_EXT_DECAM_2FWHM_APER"])
+	#GAL_i['vy']=-2.5*np.log10(GAL_i["FLUX_VIS_2FWHM_APER"]/GAL_i["FLUX_Y_2FWHM_APER"])
+	#GAL_i.keep_columns(['RIGHT_ASCENSION', 'DECLINATION', 'gr', 'vy'])
+	#GAL_i.write(os.path.join(topdir, 'concat_short.fits'))
+	print(len(GAL_i))
 	color = GAL_i[color_name]
 	coord_GAL = deg_to_rad * np.transpose([GAL_i['DECLINATION'], GAL_i['RIGHT_ASCENSION'] ])
 

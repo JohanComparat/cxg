@@ -20,6 +20,8 @@ python compute_wprp_Files_MaskHpx_MstarDEP.py 100 \
 "AUTOCORR_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-wprp-pimax100-bin0p05-HpxMask.fits" \
  10.25 0.05 0.18
 
+
+
 python compute_wprp_Files_MaskHpx_MstarDEP.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228_DATA.fits" \
@@ -54,6 +56,13 @@ python compute_wprp_Files_MaskHpx_MstarDEP_CLU.py 100 \
 "/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
 "erass1cl_main_v2.0_w_xrayresu_w_expbkg_S0.fit" \
 "randoms-1-0-erass1sky-hod-cutselfunc20230731_S0.fits" \
+"AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.22-wprp-pimax100-bin0p05.fits" \
+0.05 0.22
+
+python compute_wprp_Files_MaskHpx_MstarDEP_CLU.py 100 \
+"/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
+"erass1cl_main_v2.0_w_xrayresu_w_expbkg_S0.fit" \
+"randoms-1-0-erass1sky-hod-cutselfunc20230731_S0.fits" \
 "AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.26-wprp-pimax100-bin0p05.fits" \
 0.05 0.26
 
@@ -78,6 +87,13 @@ python compute_wprp_Files_MaskHpx_MstarDEP_CLU.py 100 \
 "randoms-1-0-erass1sky-hod-cutselfunc20230731_S1.fits" \
 "AUTOCORR_eRASS1_VLIM_CLUSTERS_S1_0.05_z_0.26-wprp-pimax100-bin0p05.fits" \
 0.05 0.26
+
+python compute_wprp_Files_MaskHpx_MstarDEP_CLU.py 100 \
+"/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
+"erass1cl_main_v2.0_w_xrayresu_w_expbkg_S1.fit" \
+"randoms-1-0-erass1sky-hod-cutselfunc20230731_S1.fits" \
+"AUTOCORR_eRASS1_VLIM_CLUSTERS_S1_0.05_z_0.31-wprp-pimax100-bin0p05.fits" \
+0.05 0.31
 
 python compute_wprp_Files_MaskHpx_MstarDEP_CLU.py 100 \
 "/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
@@ -167,6 +183,17 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 
 python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
+"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
+"/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
+"erass1cl_main_v2.0_w_xrayresu_w_expbkg_S0.fit" \
+"randoms-1-0-erass1sky-hod-cutselfunc20230731_S0.fits" \
+"eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask.fits" \
+10.25 0.05 0.22
+
+
+python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228_DATA.fits" \
 "LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228_RAND.fits" \
 "/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
@@ -174,6 +201,16 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 "randoms-1-0-erass1sky-hod-cutselfunc20230731_S0.fits" \
 "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p05-HpxMask.fits" \
 10.5 0.05 0.26
+
+python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
+"/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
+"erass1cl_main_v2.0_w_xrayresu_w_expbkg_S0.fit" \
+"randoms-1-0-erass1sky-hod-cutselfunc20230731_S0.fits" \
+"eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask.fits" \
+10.75 0.05 0.31
 
 python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
@@ -216,6 +253,16 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 "randoms-1-0-erass1sky-hod-cutselfunc20230731_S1.fits" \
 "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p05-HpxMask.fits" \
 10.5 0.05 0.26
+
+python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
+"/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
+"erass1cl_main_v2.0_w_xrayresu_w_expbkg_S1.fit" \
+"randoms-1-0-erass1sky-hod-cutselfunc20230731_S1.fits" \
+"eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask.fits" \
+10.75 0.05 0.31
 
 python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
