@@ -86,6 +86,7 @@ RES_MAX = []
 RES_MAX_100kpc = []
 params_SN = []
 params_WT = []
+params_WT_err = []
 for jj, p2_data in enumerate(p2_all_dat):
     RES[jj] = np.load(p2_data, allow_pickle='TRUE').item()
     all_z         .append(RES[jj]['z_bar'] * np.ones_like(RES[jj]['color_grid']))
@@ -176,14 +177,14 @@ for jj, p2_data in enumerate(p2_all_dat):
     plt.xlim((RS_interp(RES[jj]['z_bar'])-0.5,RS_interp(RES[jj]['z_bar'])+0.5))
     plt.ylabel(r'$\int [w(r<R_{max}))$')
     #plt.yscale('log')
-    plt.title('clusters '+cl_sample +',z='+str(np.round(RES[jj]['z_bar'],2)))
+    plt.title('clusters '+cl_sample +',z='+str(np.round(RES[jj]['z_bar'],3)))
     plt.legend(loc=0, fontsize=10, framealpha=0.95)
     plt.tight_layout()
     plt.savefig(p2_fig)
     plt.clf()
     print(p2_fig)
     params_WT.append(np.hstack((p_out, RES[jj]['z_bar'])))
-
+    params_WT_err.append([ c_out[3][3]**0.5, c_out[2][2]**0.5 ])
     p2_fig  = os.path.join(fig_dir, 'RS_gr_z_intWTH_'+os.path.basename(p2_data)+'-residual.png')
     plt.figure(8, (7.4, 5.5))
     plt.fill_between(RES[jj]['color_grid'][s1]+color_step/2., RES[jj]['intWTH_1Mpc_lo'][s1]/RES[jj]['intWTH_1Mpc'][s1], RES[jj]['intWTH_1Mpc_up'][s1]/RES[jj]['intWTH_1Mpc'][s1], color='darkred', alpha=0.3, label='Relative uncertainties')
@@ -200,7 +201,7 @@ for jj, p2_data in enumerate(p2_all_dat):
     plt.ylabel(r'$\int [w(r<R_{max}))$/model')
     plt.ylim((0,2))
     #plt.yscale('log')
-    plt.title('clusters '+cl_sample +',z='+str(np.round(RES[jj]['z_bar'],2)))
+    #plt.title('clusters '+cl_sample +',z='+str(np.round(RES[jj]['z_bar'],3)))
     plt.legend(loc=0, fontsize=10, framealpha=0.95)
     plt.tight_layout()
     plt.savefig(p2_fig)
@@ -209,6 +210,7 @@ for jj, p2_data in enumerate(p2_all_dat):
 
 
 params_WT = np.transpose(params_WT)
+params_WT_err = np.transpose(params_WT_err)
 params_SN = np.transpose(params_SN)
 
 RES_MAX = np.transpose(RES_MAX)
@@ -243,12 +245,43 @@ RS['intWTH_1Mpc']    = intWTH_1Mpc
 RS['intWTH_1Mpc_up'] = intWTH_1Mpc_up
 RS['intWTH_1Mpc_lo'] = intWTH_1Mpc_lo
 
-
+# recast in a matrix
+#mat = np.zeros(( len(np.unique(RS['all_z'])), len(np.unique(RS['all_colors'])) ))
+#for ii, zz in enumerate(np.unique(RS['all_z'])):
+    #for jj, yy in enumerate(np.unique(RS['all_colors'])):
+        #if len(RS['intWTH_1Mpc'][(RS['all_z']==zz)&(RS['all_colors']==yy)])==1:
+            #mat[ii, jj] = RS['intWTH_1Mpc'][(RS['all_z']==zz)&(RS['all_colors']==yy)]
+#mat = np.transpose(mat)
 # plot CT
 
-p2_fig  = os.path.join(fig_dir, 'RS_gr_z_WT1Mpc_'+cl_sample+'.png')
-plt.figure(11, (7.4,7.5))
-plt.scatter(RS['all_z'], RS['all_colors'], s=10, marker='s', c=RS['intWTH_1Mpc'] , cmap=pl.cm.cool_r, label='GalxClusters', alpha=0.2)#, vmax=15)
+p2_fig  = os.path.join(fig_dir, 'RS_gr_z_WT200kpc_'+cl_sample+'.png')
+plt.figure(3, (5,8))
+ok = (RS['intWTH_100kpc']>0) & (RS['intWTH_100kpc']<np.inf)
+plt.scatter(RS['all_z'][ok], RS['all_colors'][ok], s=8, marker='s', c=RS['intWTH_100kpc'][ok] ,  label='GalxClusters', alpha=0.8)#, vmax=15) cmap=pl.cm.cool_r,
+#plt.imshow(mat)#RS['all_z'], RS['all_colors'], s=10, marker='s', c=RS['intWTH_100kpc'] , cmap=pl.cm.cool_r, label='GalxClusters', alpha=0.2)#, vmax=15)
+plt.plot(z_RS, gr_RS, 'k--',lw=2,label='model Kluge 24')
+plt.plot(z_RS, gr_RS-gr_RS_sigma, 'k:', lw=2)
+plt.plot(z_RS, gr_RS+gr_RS_sigma, 'k:', lw=2)
+plt.plot(params_WT[-1], params_WT[3], 'r--', lw=2,label=r'fit $\int [w(r<200kpc))$',c='darkred')
+plt.plot(params_WT[-1], params_WT[3]+params_WT[2], 'r:', lw=2,c='darkred')
+plt.plot(params_WT[-1], params_WT[3]-params_WT[2], 'r:', lw=2,c='darkred')
+###plt.plot(RES_MAX_100kpc[0], RES_MAX_100kpc[1], ls='--',lw=2,label='highest S/N 100kpc',c='darkgreen')
+plt.colorbar(label=r'$\int [w(r<200kpc))$')
+plt.xlim((RS['all_z'].min()-0.01, RS['all_z'].max()+0.01))
+plt.ylim((0.7, 1.9))#RS['all_colors'].min()-0.01, RS['all_colors'].max()+0.01))
+plt.ylabel(r'color $g-r$')
+plt.xlabel(r"$z$")
+plt.title('clusters '+cl_sample )
+plt.legend(loc=4, fontsize=12, framealpha=0.95)
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
+
+p2_fig  = os.path.join(fig_dir, 'RS_gr_z_WT500kpc_'+cl_sample+'.png')
+plt.figure(3, (5,8))
+ok = (RS['intWTH_1Mpc']>0) & (RS['intWTH_1Mpc']<np.inf)
+plt.scatter(RS['all_z'][ok], RS['all_colors'][ok], s=8, marker='x', c=np.log10(RS['intWTH_1Mpc'][ok]) ,  label='GalxClusters', alpha=1, linewidths=6)#, vmax=15) cmap=pl.cm.cool_r,
 plt.plot(z_RS, gr_RS, 'k--',lw=2,label='model Kluge 24')
 plt.plot(z_RS, gr_RS-gr_RS_sigma, 'k:', lw=2)
 plt.plot(z_RS, gr_RS+gr_RS_sigma, 'k:', lw=2)
@@ -256,9 +289,10 @@ plt.plot(params_WT[-1], params_WT[3], 'r--', lw=2,label=r'fit $\int [w(r<500kpc)
 plt.plot(params_WT[-1], params_WT[3]+params_WT[2], 'r:', lw=2,c='darkred')
 plt.plot(params_WT[-1], params_WT[3]-params_WT[2], 'r:', lw=2,c='darkred')
 #plt.plot(RES_MAX_100kpc[0], RES_MAX_100kpc[1], ls='--',lw=2,label='highest S/N 100kpc',c='darkgreen')
-plt.colorbar(label=r'$\int [w(r<500kpc))$')
-plt.xlim((RS['all_z'].min()-0.01, RS['all_z'].max()+0.01))
-plt.ylim((RS['all_colors'].min()-0.01, RS['all_colors'].max()+0.01))
+plt.colorbar(label=r'$\int^{500kpc}_0 w(\theta) d\theta$')
+plt.xlim((0.15, 0.35))#RS['all_z'].min()-0.01, RS['all_z'].max()+0.01))
+#plt.ylim((RS['all_colors'].min()-0.01, RS['all_colors'].max()+0.01))
+plt.ylim((0.7, 1.9))#RS['all_colors'].min()-0.01, RS['all_colors'].max()+0.01))
 plt.ylabel(r'color $g-r$')
 plt.xlabel(r"$z$")
 plt.title('clusters '+cl_sample )
@@ -268,18 +302,18 @@ plt.savefig(p2_fig)
 plt.clf()
 print(p2_fig)
 
-p2_fig  = os.path.join(fig_dir, 'RS_gr_z_SN100kpc_'+cl_sample+'.png')
+p2_fig  = os.path.join(fig_dir, 'RS_gr_z_SN200kpc_'+cl_sample+'.png')
 plt.figure(11, (7.4,7.5))
 plt.scatter(RS['all_z'], RS['all_colors'], s=100, marker='s', c=np.log10(RS['all_sn_100kpc']) , cmap=pl.cm.cool_r, vmin=0, label='GalxClusters', alpha=0.3)#, vmax=15)
 plt.plot(z_RS, gr_RS, 'k--', lw=2, label='model Kluge 24')
 plt.plot(z_RS, gr_RS-gr_RS_sigma, 'k:', lw=2)
 plt.plot(z_RS, gr_RS+gr_RS_sigma, 'k:', lw=2)
-#plt.plot(RES_MAX[0], RES_MAX[1], ls='--',lw=2,label='highest S/N 1Mpc',c='darkred')
-#plt.plot(RES_MAX_100kpc[0], RES_MAX_100kpc[1], ls='--',lw=2,label='highest S/N 100kpc',c='darkgreen')
-plt.plot(params_WT[-1], params_WT[3], 'r--', label=r'$\int [w(r<500kpc))$')
+plt.plot(RES_MAX[0], RES_MAX[1], ls='--',lw=2,label='highest S/N 500kpc',c='darkred')
+plt.plot(RES_MAX_100kpc[0], RES_MAX_100kpc[1], ls='--',lw=2,label='highest S/N 200kpc',c='darkgreen')
+plt.plot(params_WT[-1], params_WT[3], 'r--', label=r'$\int [w(r<200kpc))$')
 plt.plot(params_WT[-1], params_WT[3]+params_WT[2], 'r:')
 plt.plot(params_WT[-1], params_WT[3]-params_WT[2], 'r:')
-plt.colorbar(label=r'log10 $\Sigma [S/N(r<100kpc)]$')
+plt.colorbar(label=r'log10 $\Sigma [S/N(r<200kpc)]$')
 plt.xlim((RS['all_z'].min()-0.01, RS['all_z'].max()+0.01))
 plt.ylim((RS['all_colors'].min()-0.01, RS['all_colors'].max()+0.01))
 plt.ylabel(r'color $g-r$')
@@ -291,15 +325,15 @@ plt.savefig(p2_fig)
 plt.clf()
 print(p2_fig)
 
-p2_fig  = os.path.join(fig_dir, 'RS_gr_z_SN1Mpc_'+cl_sample+'.png')
+p2_fig  = os.path.join(fig_dir, 'RS_gr_z_SN500kpc_'+cl_sample+'.png')
 plt.figure(11, (7.4,7.5))
 plt.scatter(RS['all_z'], RS['all_colors'], s=100, marker='s', c=np.log10(RS['all_sn_1Mpc']) , cmap=pl.cm.cool_r, vmin=0, label='GalxClusters', alpha=0.3)#, vmax=15)
 plt.plot(z_RS, gr_RS, 'k--',lw=2,label='model Kluge 24')
 plt.plot(z_RS, gr_RS-gr_RS_sigma, 'k:', lw=2)
 plt.plot(z_RS, gr_RS+gr_RS_sigma, 'k:', lw=2)
-plt.plot(RES_MAX[0], RES_MAX[1], ls='--',lw=2,label='highest S/N 1Mpc',c='darkred')
-plt.plot(RES_MAX_100kpc[0], RES_MAX_100kpc[1], ls='--',lw=2,label='highest S/N 100kpc',c='darkgreen')
-plt.colorbar(label=r'log10 $\Sigma [S/N(r<1Mpc)]$')
+plt.plot(RES_MAX[0], RES_MAX[1], ls='--',lw=2,label='highest S/N 500kpc',c='darkred')
+plt.plot(RES_MAX_100kpc[0], RES_MAX_100kpc[1], ls='--',lw=2,label='highest S/N 200kpc',c='darkgreen')
+plt.colorbar(label=r'log10 $\Sigma [S/N(r<500kpc)]$')
 plt.xlim((RS['all_z'].min()-0.01, RS['all_z'].max()+0.01))
 plt.ylim((RS['all_colors'].min()-0.01, RS['all_colors'].max()+0.01))
 plt.ylabel(r'color $g-r$')
@@ -312,5 +346,6 @@ plt.clf()
 print(p2_fig)
 
 
-
+for e0, e1, e1e, e2, e2e in zip(params_WT[-1], params_WT[3], params_WT_err[0], params_WT[2], params_WT_err[1]):
+    print(np.round(e0,3), '&', np.round(e1,4), r'$\pm$', np.round(e1e,4), '&', np.round(e2,4), r'$\pm$', np.round(e2e,4), '\\\\')
 

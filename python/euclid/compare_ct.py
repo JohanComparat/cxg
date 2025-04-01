@@ -150,8 +150,10 @@ print(p2_dat, 'written')
 #SN_min = 5
 #sel = (sumsn_100kpc_all> SN_min)
 #print(RES['color_grid'][sel])
+asort = np.argsort(sumsn_100kpc_all)
+sel = asort[::-1][:6]
 
-sys.exit()
+#sys.exit()
 
 c_val_norm = (RES['color_grid'][sel] -  RES['color_grid'][sel].min() ) / ( RES['color_grid'][sel].max() - RES['color_grid'][sel].min() )
 colors = pl.cm.rainbow(c_val_norm)
@@ -164,6 +166,12 @@ for jj, c_val, cc in zip(np.arange(len(RES['color_grid']))[sel], RES['color_grid
     diff_data = np.hstack(( RES['DATA'][jj][0], RES['DATA'][jj][1:]-RES['DATA'][jj][:-1] ))
     diff_rand = np.hstack(( RES['RAND'][jj][0], RES['RAND'][jj][1:]-RES['RAND'][jj][:-1] ))
     y_pcf = (diff_data / RES['N_D'] ) / ( diff_rand / RES['N_R'] )
+    # rebin y_pcf by 2
+    diff_data_rebin = diff_data.reshape(30,2).sum(axis=1)
+    diff_rand_rebin = diff_rand.reshape(30,2).sum(axis=1)
+    y_pcf_rebin = (diff_data_rebin / RES['N_D'] ) / ( diff_rand_rebin / RES['N_R'] )
+    x_pcf_rebin = 0.5*( RES['theta_grid'].reshape(30,2).mean(axis=1) + np.hstack((0., RES['theta_grid'][:-1])).reshape(30,2).mean(axis=1) )
+
     y_pcf_err = y_pcf* (1/diff_data + 1/diff_rand)**0.5
     ratio = y_pcf/y_pcf_err
     x_pcf = 0.5*( RES['theta_grid']+ np.hstack((0., RES['theta_grid'][:-1])) )
@@ -171,19 +179,20 @@ for jj, c_val, cc in zip(np.arange(len(RES['color_grid']))[sel], RES['color_grid
     x_pcf_lo = np.hstack((0., RES['theta_grid'][:-1]))
     sumsn_100kpc = np.sum(ratio[(~np.isnan(ratio))&(x_pcf*x_conversion<0.2)])
     #if sumsn_100kpc>5:
-    plt.plot(x_pcf*x_conversion, y_pcf, color=cc)
+    #plt.plot(x_pcf*x_conversion, y_pcf, color=cc, ls='dashed')
+    plt.plot(x_pcf_rebin*x_conversion, y_pcf_rebin, color=cc, lw=3)
 
 plt.scatter(-1*c_val_norm, -1*c_val_norm, s=1, c=RES['color_grid'][sel] , cmap=pl.cm.tab20b)#, label=r"Events $1/[(R/R_c)^{\alpha}x(1+(R/R_c)^{2.2})]$")
 
 plt.colorbar(label=r'color $g-r$')
 
-plt.xlim((x_pcf.min()*x_conversion/1.5, x_pcf.max()*x_conversion*1.5))
-plt.ylim((0.1, 1000))
+plt.xlim((0.05,1.3))#x_pcf.min()*x_conversion/1.5, x_pcf.max()*x_conversion*1.5))
+plt.ylim((2, 1000))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r$ [Mpc, proper] ")
-plt.ylabel(r"$\frac{N^{pairs}_{Cluster-Gal}}{N^{pairs}_{Random-Gal}}\frac{N_R}{N_D}-1$")
-plt.title(str(RES['N_D'])+' clusters, z='+str(np.round(RES['z_bar'],3)) +'\n'+r' $\Sigma [S/N(r<100kpc)] > $'+str(SN_min))
+plt.ylabel(r"$w_{DP83}$")
+plt.title(str(RES['N_D'])+r' clusters, $\bar{z}=$'+str(np.round(RES['z_bar'],3)))# +'\n'+r' $\Sigma [S/N(r<100kpc)] > $'+str(SN_min))
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
