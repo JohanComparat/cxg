@@ -131,12 +131,7 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, RA2, DE
 									CZ2 =rand_CZ2.astype('float'))
 			#print('RR',RR_counts['npairs'])
 			# All the pair counts are done, get the angular correlation function
-			wp = convert_rp_pi_counts_to_wp(N, N2, rand_N, rand_N2, DD_counts, D1R_counts, D2R_counts, RR_counts, nbins, pimax)
-			# All the pair counts are done, get the angular correlation function
-			wprp_JK[jj] = convert_rp_pi_counts_to_wp(N, N, rand_N, rand_N, DD_counts, DR_counts, DR_counts, RR_counts, nbins, pimax)
-	#print ( "wprp_JK.mean(axis=0)", wprp_JK.mean(axis=0).shape, wprp_JK.mean(axis=0),  wprp_JK.mean(axis=0) / wp  )
-	#print ( "wprp_JK.std(axis=0) ", wprp_JK.std(axis=0) .shape, wprp_JK.std(axis=0),  wprp_JK.std(axis=0) / wp  )
-	#print ( "wp                ", wp                .shape, wp                  )
+			wprp_JK[jj] = convert_rp_pi_counts_to_wp(N, N2, rand_N, rand_N2, DD_counts, D1R_counts, D2R_counts, RR_counts, nbins, pimax)
 	#t['wprp_JK'] = wprp_JK
 	t.add_column(Column(data = wprp_JK.mean(axis=0), name='wprp_JK_mean', unit=''  ) )
 	t.add_column(Column(data = wprp_JK.std(axis=0), name='wprp_JK_std', unit=''  ) )
