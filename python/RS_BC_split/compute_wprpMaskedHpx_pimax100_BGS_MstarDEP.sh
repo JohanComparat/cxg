@@ -47,21 +47,21 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 10.75 0.05 0.31
 
 
-python compute_wprp_Files_MaskHpx_splitRSBC_JK.py 100 \
-"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits" 10.25
+# python compute_wprp_Files_MaskHpx_splitRSBC_JK.py 100 \
+# "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+# "LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
+# "LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
+# "LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits" 10.25
+#
+# python compute_wprp_Files_MaskHpx_splitRSBC_JK.py 100 \
+# "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+# "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
+# "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
+# "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits" 10.75
 
-python compute_wprp_Files_MaskHpx_splitRSBC_JK.py 100 \
-"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
-"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
-"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
-"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits" 10.75
 
 
-
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "BC_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
 "BC_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
@@ -72,7 +72,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 10.25 0.05 0.22
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "RS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
 "RS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
@@ -84,7 +84,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "BC_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
 "BC_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
@@ -95,7 +95,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 10.75 0.05 0.31
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "RS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
 "RS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
@@ -106,7 +106,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 10.75 0.05 0.31
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "BC_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
 "BC_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
@@ -117,7 +117,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 10.75 0.05 0.31
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "RS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
 "RS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
@@ -265,7 +265,7 @@ python compute_wprp_Files_MaskHpx_splitRSBC_JK.py 100 \
 
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "BC_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838_DATA.fits" \
 "BC_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838_RAND.fits" \
@@ -276,7 +276,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 11.0 0.05 0.35
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "RS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838_DATA.fits" \
 "RS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838_RAND.fits" \
@@ -287,10 +287,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 11.0 0.05 0.35
 
 
-
-
-
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238_DATA.fits" \
 "BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238_RAND.fits" \
@@ -301,7 +298,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 10.0 0.05 0.18
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "RS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238_DATA.fits" \
 "RS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238_RAND.fits" \
@@ -313,7 +310,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "BC_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228_DATA.fits" \
 "BC_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228_RAND.fits" \
@@ -324,7 +321,7 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
 10.5 0.05 0.26
 
 
-python compute_wprp_Files_MaskHpx_MstarDEP_cross.py 100 \
+python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "RS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228_DATA.fits" \
 "RS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228_RAND.fits" \
