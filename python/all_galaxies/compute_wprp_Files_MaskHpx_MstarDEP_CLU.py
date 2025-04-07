@@ -34,7 +34,7 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_fil
 	N = len(RA)
 	rand_N = len(rand_RA)
 	#print(N, rand_N, out_file, time.time()-t0)
-	bins = 10**np.arange(-2.0, 1.81, 0.05)
+	bins = 10**np.arange(-2.0, 1.81, 0.1)
 	nbins = len(bins)-1
 	#print('bins', bins, bins.shape)
 	x = (bins[1:]+bins[:-1])/2.
