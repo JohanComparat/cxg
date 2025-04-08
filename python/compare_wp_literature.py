@@ -77,16 +77,16 @@ BGS["ANY_11.25"] = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_11
 BGS["ANY_11.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p05-HpxMask.fits" ) )
 
 BGS["RS_10.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.0-wprp-pimax100-bin0p05-HpxMask.fits" ) )
-BGS["RS_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p05-HpxMask.fits" ) )
+BGS["RS_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask.fits" ) )
 BGS["RS_10.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-MstarMin_10.5-wprp-pimax100-bin0p05-HpxMask.fits" ) )
-BGS["RS_10.75"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p05-HpxMask.fits" ) )
+BGS["RS_10.75"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask.fits" ) )
 BGS["RS_11.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p05-HpxMask.fits" ) )
 BGS["RS_11.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p05-HpxMask.fits" ) )
 
 BGS["BC_10.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.0-wprp-pimax100-bin0p05-HpxMask.fits" ) )
-BGS["BC_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p05-HpxMask.fits" ) )
+BGS["BC_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask.fits" ) )
 BGS["BC_10.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-MstarMin_10.5-wprp-pimax100-bin0p05-HpxMask.fits" ) )
-BGS["BC_10.75"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p05-HpxMask.fits" ) )
+BGS["BC_10.75"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask.fits" ) )
 BGS["BC_11.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p05-HpxMask.fits" ) )
 BGS["BC_11.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p05-HpxMask.fits" ) )
 
@@ -270,7 +270,7 @@ CxG["S4_ANY_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_
 CxG["S4_ANY_11.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S4_CROSS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
 
 CxG["S2_BC_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S2_CROSS_LS10_VLIM_BC_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask.fits" ) )
-CxG["S2_RS_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S2_CROSS_LS10_VLIM_RS_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask.fits" ) )
+CxG["S2_RS_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S2_CROSS_LS10_VLIM_RS_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
 
 CxG["S1_BC_10.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_BC_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask.fits" ) )
 CxG["S1_RS_10.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_RS_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask.fits" ) )
@@ -299,34 +299,34 @@ CxG["S0_RS_10.25"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M1075-ANY-BC-RS-S1-clusters.png')
 plt.figure(13, (6,6))
 t_wp = BGS["ANY_10.75"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed',  label=r'Galaxies $10.75<\log_{10}(M*[M_\odot])<12$', color='grey')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed',  label=r'G1075', color='grey')
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='grey', alpha=0.4)
 t_wp = BGS["RS_10.75"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed', color='darkred')
-f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkred', alpha=0.4)
+#f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+#plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkred', alpha=0.4)
 t_wp = BGS["BC_10.75"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed', color='darkblue')
-f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkblue', alpha=0.4)
+#f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+#plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkblue', alpha=0.4)
 
-t_wp = CLU["S1_0.05_z_0.31"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=1,  ls='solid', label=r'Clusters, $\log_{10}(L_X\; [\mathrm{erg/s}])>43.1$', color='orange')
+#t_wp = CLU["S1_0.05_z_0.31"]
+#plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=1,  ls='solid', label=r'Clusters, $\log_{10}(L_X\; [\mathrm{erg/s}])>43.1$', color='orange')
 t_wp = CxG["S1_ANY_10.75"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=3,  ls='solid', label='Galaxies x Clusters ', color='grey')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=3,  ls='solid', label='C1xG1075', color='grey')
 t_wp = CxG["S1_BC_10.75"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=3,  ls='solid', label='blue-cloud', color='darkblue')
 t_wp = CxG["S1_RS_10.75"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=3,  ls='solid', label='red-sequence', color='darkred')
 
 plt.ylim((1, 2e3))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$r_p\times w_p(r_p)$")#, $\pi_{max}=100$ Mpc$/h$")
-plt.legend(loc=4, fontsize=12,ncol=1, title=r'$0.1<z<0.3$')#, title='LS10, r<19.5, 0.05<z<0.22')
+plt.ylabel(r"$r_p\times w_p(r_p)$")#")
+plt.legend(loc=4, fontsize=12,ncol=1, title=r'C1xG1075')#, title='LS10, r<19.5, 0.05<z<0.22')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
@@ -339,9 +339,9 @@ p2_fig = os.path.join( fig_dir, 'wprp-obs-M1075-ANY-BC-RS-S1-clusters-ratio.png'
 plt.figure(13, (6,6))
 t_ref = BGS["ANY_10.75"]
 t_wp = BGS["RS_10.75"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='RS, Gal x Gal', color='darkred')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', label='RS, Gal x Gal', color='darkred')
 t_wp = BGS["BC_10.75"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='BC, Gal x Gal ', color='darkblue')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', label='BC, Gal x Gal ', color='darkblue')
 
 t_ref = CxG["S1_ANY_10.75"]
 t_wp = CxG["S1_BC_10.75"]
@@ -351,12 +351,12 @@ plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='
 
 plt.axhline(1,color='k', ls='dotted')
 plt.ylim((0, 2))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 #plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w_p(r_p)/w^{REF}_p$, $\pi_{max}=100$ Mpc$/h$")
-plt.legend(loc=1, fontsize=10, title='10.75<M*<12, S1 LX>43.1')
+plt.ylabel(r"$w^{\rm RS\; or\; BC}_p(r_p)/w^{\rm All}_p$")
+plt.legend(loc=1, fontsize=10, title='C1xG1075')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
@@ -367,29 +367,29 @@ p2_fig = os.path.join( fig_dir, 'wprp-obs-M1075-ANY-BC-RS-S1-clusters-ratioCROSS
 plt.figure(13, (6,6))
 t_ref = BGS["ANY_10.75"]
 t_wp = CxG["S1_ANY_10.75"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', color='grey')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', color='grey', label='all galaxies')
 
 t_ref = BGS["RS_10.75"]
 t_wp = CxG["S1_RS_10.75"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', color='darkred')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', color='darkred', label='red-sequence')
 
 t_ref = BGS["BC_10.75"]
 t_wp = CxG["S1_BC_10.75"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', color='darkblue')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', color='darkblue', label='blue-cloud')
 b_gal = 1.43
 b_clu = 3.35
 b_clu_e = 0.23
 xx = t_wp['rp_mid']
 plt.fill_between(xx, y1=np.ones_like(xx)*( ((b_clu-b_clu_e)/b_gal)), y2=np.ones_like(xx)*( ((b_clu+b_clu_e)/b_gal)), color='darkgreen', alpha=0.2)
-plt.axhline((b_clu/b_gal), color='darkgreen', ls='dashed')
+plt.axhline((b_clu/b_gal), color='darkgreen', ls='dashed', label='$b_{C}/b_{G}$')
 
-plt.ylim((0.1, 100))
-plt.xlim((0.01, 60))
+plt.ylim((0.9, 30))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$")
-#plt.legend(loc=1, fontsize=10, title='10.75<M*<12, S1 LX>43.1')
+plt.ylabel(r"$w^{C1xG1075}_p/w^{G1075}_p$")
+plt.legend(loc=3, fontsize=12,ncol=2, title='C1xG1075')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
@@ -407,28 +407,36 @@ print(p2_fig)
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M1025-ANY-BC-RS-S0-clusters.png')
 plt.figure(13, (6,6))
 t_wp = BGS["ANY_10.25"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed',  label=r'Galaxies $10.25<\log_{10}(M*[M_\odot])<12$', color='grey')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed',  label=r'G1025', color='grey')
+f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='grey', alpha=0.4)
+
 t_wp = BGS["RS_10.25"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed', color='darkred')
+#f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+#plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkred', alpha=0.4)
+
 t_wp = BGS["BC_10.25"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed', color='darkblue')
+#f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+#plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkblue', alpha=0.4)
 
-t_wp = CLU["S0_0.05_z_0.22"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=1,  ls='solid', label='Clusters, $\log_{10}(L_X\; [\mathrm{erg/s}])>42.7$', color='orange')
+#t_wp = CLU["S0_0.05_z_0.22"]
+#plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=1,  ls='solid', label='C1', color='orange')
 t_wp = CxG["S0_ANY_10.25"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=3,  ls='solid', label='Galaxies x Clusters ', color='grey')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=3,  ls='solid', label='C1xG1025', color='grey')
 t_wp = CxG["S0_BC_10.25"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=3,  ls='solid', label='blue-cloud', color='darkblue')
 t_wp = CxG["S0_RS_10.25"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=3,  ls='solid', label='red-sequence', color='darkred')
 
 plt.ylim((1, 2e3))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$r_p\times w_p(r_p)$")#, $\pi_{max}=100$ Mpc$/h$")
-plt.legend(loc=4, fontsize=12,ncol=1, title=r'$0.1<z<0.2$')#, title='LS10, r<19.5, 0.05<z<0.22')
+plt.ylabel(r"$r_p\times w_p(r_p)$")#")
+plt.legend(loc=4, fontsize=12,ncol=1, title=r'C1xG1025')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
@@ -439,9 +447,9 @@ p2_fig = os.path.join( fig_dir, 'wprp-obs-M1025-ANY-BC-RS-S0-clusters-ratio.png'
 plt.figure(13, (6,6))
 t_ref = BGS["ANY_10.25"]
 t_wp = BGS["RS_10.25"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='RS, Gal x Gal', color='darkred')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', label='RS, Gal x Gal', color='darkred')
 t_wp = BGS["BC_10.25"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid', label='BC, Gal x Gal ', color='darkblue')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', label='BC, Gal x Gal ', color='darkblue')
 
 t_ref = CxG["S0_ANY_10.25"]
 t_wp = CxG["S0_BC_10.25"]
@@ -451,11 +459,11 @@ plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='
 
 plt.axhline(1,color='k', ls='dotted')
 plt.ylim((0, 2))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 #plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w_p(r_p)/w^{REF}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.ylabel(r"$w_p(r_p)/w^{REF}_p$")
 plt.legend(loc=1, fontsize=10, title='10.25<M*<12, S0 LX>42.7')
 plt.tight_layout()
 plt.savefig(p2_fig)
@@ -467,29 +475,29 @@ p2_fig = os.path.join( fig_dir, 'wprp-obs-M1025-ANY-BC-RS-S0-clusters-ratioCROSS
 plt.figure(13, (6,6))
 t_ref = BGS["ANY_10.25"]
 t_wp = CxG["S0_ANY_10.25"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', color='grey')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', color='grey', label='all galaxies')
 
 t_ref = BGS["RS_10.25"]
 t_wp = CxG["S0_RS_10.25"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid',  color='darkred')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid',  color='darkred', label='red-sequence')
 
 t_ref = BGS["BC_10.25"]
 t_wp = CxG["S0_BC_10.25"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid',  color='darkblue')
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=3,  ls='solid',  color='darkblue', label='blue-cloud')
 b_gal = 1.29
 b_clu = 2.95
 b_clu_e = 0.21
 xx = t_wp['rp_mid']
 plt.fill_between(xx, y1=np.ones_like(xx)*( ((b_clu-b_clu_e)/b_gal)), y2=np.ones_like(xx)*( ((b_clu+b_clu_e)/b_gal)), color='darkgreen', alpha=0.2)
-plt.axhline((b_clu/b_gal), color='darkgreen', ls='dashed')
+plt.axhline((b_clu/b_gal), color='darkgreen', ls='dashed', label='$b_{C}/b_{G}$')
 
-plt.ylim((0.1, 100))
-plt.xlim((0.01, 60))
+plt.ylim((0.9, 30))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$")
-#plt.legend(loc=1, fontsize=10, title='10.25<M*<12, S0 LX>42.7')
+plt.ylabel(r"$w^{C0xG1025}_p/w^{G1025}_p$")
+plt.legend(loc=3, fontsize=12,ncol=2, title=r'C0xG1025')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
@@ -523,7 +531,7 @@ plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=2,  ls='dashed', label='BC Gal x Clu '
 t_wp = CxG["S2_RS_11.0"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=2,  ls='dashed', label='RS Gal x Clu ', color='darkred')
 plt.ylim((0.1, 3e4))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
@@ -554,11 +562,11 @@ t_wp = CxG["S2_RS_11.0"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='RS Gal x Clu ', color='darkred')
 plt.axhline(1,color='k', ls='dotted')
 plt.ylim((0, 2))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 #plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w_p(r_p)/w^{REF}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.ylabel(r"$w_p(r_p)/w^{REF}_p$")
 plt.legend(loc=1, fontsize=10, title='11.0<M*<12, S2 LX>43.3')
 plt.tight_layout()
 plt.savefig(p2_fig)
@@ -582,11 +590,11 @@ t_wp = CxG["S2_BC_11.0"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', label='BC ', color='darkblue')
 
 plt.ylim((0.1, 100))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$")
 plt.legend(loc=1, fontsize=10, title='11.0<M*<12, S2 LX>43.3')
 plt.tight_layout()
 plt.savefig(p2_fig)
@@ -619,7 +627,7 @@ t_wp = CxG["S1_RS_10.5"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=2,  ls='dashed', label='RS Gal x Clu ', color='darkred')
 
 plt.ylim((0.1, 3e4))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
@@ -647,11 +655,11 @@ plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='
 
 plt.axhline(1,color='k', ls='dotted')
 plt.ylim((0, 2))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 #plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w_p(r_p)/w^{REF}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.ylabel(r"$w_p(r_p)/w^{REF}_p$")
 plt.legend(loc=1, fontsize=10, title='10.5<M*<12, S1 LX>43.1')
 plt.tight_layout()
 plt.savefig(p2_fig)
@@ -674,11 +682,11 @@ t_wp = CxG["S1_BC_10.5"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', label='BC ', color='darkblue')
 
 plt.ylim((0.1, 100))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$")
 plt.legend(loc=1, fontsize=10, title='10.5<M*<12, S1 LX>43.1')
 plt.tight_layout()
 plt.savefig(p2_fig)
@@ -715,7 +723,7 @@ t_wp = CxG["S0_RS_10.0"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=2,  ls='dashed', label='RS Gal x Clu ', color='darkred')
 
 plt.ylim((0.1, 3e4))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
@@ -743,11 +751,11 @@ plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='dashed', label='
 
 plt.axhline(1,color='k', ls='dotted')
 plt.ylim((0, 2))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 #plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w_p(r_p)/w^{REF}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.ylabel(r"$w_p(r_p)/w^{REF}_p$")
 plt.legend(loc=1, fontsize=10, title='10.0<M*<12, S0 LX>42.7')
 plt.tight_layout()
 plt.savefig(p2_fig)
@@ -770,11 +778,11 @@ t_wp = CxG["S0_BC_10.0"]
 plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'][::2], lw=3,  ls='solid', label='BC ', color='darkblue')
 
 plt.ylim((0.1, 100))
-plt.xlim((0.01, 60))
+plt.xlim((0.03, 30))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
-plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$, $\pi_{max}=100$ Mpc$/h$")
+plt.ylabel(r"$w^{CROSS}_p(r_p)/w^{AUTO}_p$")
 plt.legend(loc=1, fontsize=10, title='10.0<M*<12, S0 LX>42.7')
 plt.tight_layout()
 plt.savefig(p2_fig)

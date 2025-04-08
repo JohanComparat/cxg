@@ -127,7 +127,7 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_fil
 	#print ( "wprp_JK.mean(axis=0)", wprp_JK.mean(axis=0).shape, wprp_JK.mean(axis=0),  wprp_JK.mean(axis=0) / wp  )
 	#print ( "wprp_JK.std(axis=0) ", wprp_JK.std(axis=0) .shape, wprp_JK.std(axis=0),  wprp_JK.std(axis=0) / wp  )
 	#print ( "wp                ", wp                .shape, wp                  )
-	t['wprp_JK'] = wprp_JK
+	#t['wprp_JK'] = wprp_JK
 	t.add_column(Column(data = wprp_JK.mean(axis=0), name='wprp_JK_mean', unit=''  ) )
 	t.add_column(Column(data = wprp_JK.std(axis=0), name='wprp_JK_std', unit=''  ) )
 	#print(out_file)

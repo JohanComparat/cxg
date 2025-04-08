@@ -2,6 +2,22 @@
 
 cd /home/comparat/software/cxg/python/RS_BC_split
 conda activate clustering
+
+
+nohup python compute_wprp_Files_MaskHpx_splitRSBC_JK.py 100 \
+"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
+"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
+"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits" 10.25 > log1025 &
+
+nohup python compute_wprp_Files_MaskHpx_splitRSBC_JK.py 100 \
+"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits" 10.75 > log1075 &
+
+
+
 python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "BC_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
@@ -45,19 +61,6 @@ python compute_wprp_Files_MaskHpx_MstarDEP_cross_JK.py 100 \
 "randoms-1-0-erass1sky-hod-cutselfunc20230731_S1.fits" \
 "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_RS_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p1-HpxMask_JK.fits" \
 10.75 0.05 0.31
-
-
-# python compute_wprp_Files_MaskHpx_splitRSBC_JK.py 100 \
-# "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
-# "LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
-# "LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
-# "LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits" 10.25
-#
-# python compute_wprp_Files_MaskHpx_splitRSBC_JK.py 100 \
-# "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
-# "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
-# "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
-# "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits" 10.75
 
 
 
