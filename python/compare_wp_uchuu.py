@@ -379,7 +379,7 @@ f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkred', alpha=0.4)
 
 t_wp = U0p14["ANY_10.25_LX42.9"]
-plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp_JK_mean'], lw=2,  ls='dashed', color='k', label='Uchuu+UM z=0.14')
+plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp_JK_mean'], lw=2,  ls='dashed', color='k', label='UM')
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.fill_between(t_wp['rp_mid'], t_wp['wprp_JK_mean']*t_wp['rp_mid']*(1-f_err), t_wp['wprp_JK_mean']*t_wp['rp_mid']*(1+f_err), color='k', alpha=0.3)
 t_wp = U0p14["BC_10.25_LX42.9"]
@@ -397,7 +397,7 @@ plt.xscale('log')
 #plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
 plt.ylabel(r"$r_p\times w_p(r_p)$")#, $\pi_{max}=100$ Mpc$/h$")
-plt.legend(loc=0, fontsize=12,ncol=1, title=r'$0.1<z<0.2$')#, title='LS10, r<19.5, 0.05<z<0.22')
+plt.legend(loc=0, fontsize=12,ncol=1, title='C0 x G1025')#, title='LS10, r<19.5, 0.05<z<0.22')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
@@ -429,7 +429,7 @@ f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkred', alpha=0.4)
 
 t_wp = U0p19["ANY_10.75_LX43.2"]
-plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp_JK_mean'], lw=2,  ls='dashed', color='k', label='Uchuu+UM z=0.19')
+plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp_JK_mean'], lw=2,  ls='dashed', color='k', label='UM')
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.fill_between(t_wp['rp_mid'], t_wp['wprp_JK_mean']*t_wp['rp_mid']*(1-f_err), t_wp['wprp_JK_mean']*t_wp['rp_mid']*(1+f_err), color='k', alpha=0.3)
 t_wp = U0p19["BC_10.75_LX43.2"]
@@ -454,7 +454,7 @@ plt.xscale('log')
 #plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
 plt.ylabel(r"$r_p\times w_p(r_p)$")#, $\pi_{max}=100$ Mpc$/h$")
-plt.legend(loc=0, fontsize=12,ncol=1, title=r'$0.1<z<0.3$')#, title='LS10, r<19.5, 0.05<z<0.22')
+plt.legend(loc=0, fontsize=12,ncol=1, title='C1 x G1075')#, title='LS10, r<19.5, 0.05<z<0.22')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
