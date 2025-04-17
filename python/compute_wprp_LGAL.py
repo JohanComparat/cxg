@@ -337,6 +337,33 @@ for MS_min in np.arange(10, 11.5, 0.01):
 	   #', sky density', np.round(len(ra_g[s_g_t])/area_sim, 3), np.round(density_G1075,3 ), 'deg-2,',
 	   ', rho', np.round(np.log10(len(ra_g[s_g_RF])/volume_sim),2), np.round(np.log10(density_G1075_gpc3),2), 'Mpc-3' )
 
+gr = gal['Mag_g']- gal['Mag_r']
+gz = gal['Mag_g']- gal['Mag_z']
+is_rs = gz > 1.95 - 0.15
+is_bc = gz < 1.95 - 0.22
+
+for MS_min in np.arange(10, 11.5, 0.01):
+	s_g_t = (gal['StellarMass']>10**MS_min)&(redshift_g>=0.1)&(redshift_g<=0.3)
+	s_g_RF = (gal['StellarMass']>10**MS_min)
+	print(np.round(MS_min,2), len(ra_g[s_g_t]),
+	   #', sky density', np.round(len(ra_g[s_g_t])/area_sim, 3), np.round(density_G1075,3 ), 'deg-2,',
+	   ', rho', np.round(np.log10(len(ra_g[s_g_RF])/volume_sim),2), np.round(np.log10(density_G1075_gpc3),2), 'Mpc-3',
+	   ', rho RS', np.round(np.log10(len(ra_g[s_g_RF & is_rs])/volume_sim),2), np.round(np.log10(density_G1075_gpc3),2), 'Mpc-3',
+	   ', rho BC', np.round(np.log10(len(ra_g[s_g_RF & is_bc])/volume_sim),2), np.round(np.log10(density_G1075_gpc3),2), 'Mpc-3'
+	   )
+
+nl = lambda sel : len(sel.nonzero()[0])
+
+N_SF = np.histogram(gz[(gal['StellarMass']>10**10.25)&(np.log10(gal['StarFormationRate']/gal['StellarMass'])>-11)], bins=np.arange(0,2,0.1))[0]
+N_QU = np.histogram(gz[(gal['StellarMass']>10**10.25)&(np.log10(gal['StarFormationRate']/gal['StellarMass'])<-11)], bins=np.arange(0,2,0.1))[0]
+for b0,e0,e1 in zip(np.arange(0,2,0.1),N_SF, N_QU):
+    print(np.round(b0,1),e0,e1,np.round(e1/(e1+e0),3) )
+
+N_SF = np.histogram(gz[(gal['StellarMass']>10**10.75)&(np.log10(gal['StarFormationRate']/gal['StellarMass'])>-11)], bins=np.arange(0,2,0.1))[0]
+N_QU = np.histogram(gz[(gal['StellarMass']>10**10.75)&(np.log10(gal['StarFormationRate']/gal['StellarMass'])<-11)], bins=np.arange(0,2,0.1))[0]
+for b0,e0,e1 in zip(np.arange(0,2,0.1),N_SF, N_QU):
+    print(np.round(b0,1),e0,e1,np.round(e1/(e1+e0),3) )
+
 pcf_dir ='/home/comparat/software/cxg/data/lgal/'
 
 Ms_val_GAM = 10.67
