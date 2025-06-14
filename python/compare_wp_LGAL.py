@@ -45,7 +45,11 @@ colors = ["#67E568","#FFF000","#FFB62B","#E56124",
 
 fig_dir  ='../figures/uchuu'
 
+os.environ['GIT_STMOD_DATA'] = os.path.join(os.environ['USERPROFILE'], "Documents\Shared\software\st_mod_data") # visible in this process + all children
 ZuMa_dir = os.path.join(os.environ['GIT_STMOD_DATA'], 'data/benchmark/zu-mandelbaum-1505.02781v1')
+
+os.environ['LSDR10'] = os.path.join(os.environ['USERPROFILE'], "Documents\Shared\data\legacysurvey\dr10")
+LS10_bgs_vlim_dir = os.path.join(os.environ['LSDR10'], 'sweep\BGS_VLIM_Mstar')
 
 ZuMa = {}
 ZuMa["esd_10.2_M_10.6"]  = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_esd_10.2_M_10.6_measurements.txt" ), unpack = True)
@@ -64,7 +68,6 @@ ZuMa["wprp_11.4_M_12.0"] = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_11.4_M_
 ZuMa["wprp_9.4_M_9.8"]   = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_9.4_M_9.8_measurements.txt"  ), unpack = True)
 ZuMa["wprp_9.8_M_10.2"]  = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_9.8_M_10.2_measurements.txt" ), unpack = True)
 
-LS10_bgs_vlim_dir = os.path.join(os.environ['LSDR10'], 'sweep/BGS_VLIM_Mstar')
 BGS = {}
 #BGS["ANY_9.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_9.0_Mstar_12.0_0.05_z_0.08_N_0523486-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
 #BGS["ANY_9.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_9.5_Mstar_12.0_0.05_z_0.12_N_1432502-wprp-pimax100-bin0p1-HpxMask.fits"  ) )

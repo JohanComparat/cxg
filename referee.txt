@@ -1,0 +1,68 @@
+
+Report by referee 1:
+
+This manuscript details the analysis of cross-correlations of X-ray-selected galaxy clusters from eROSITA and volume-limited galaxy samples from the DESI legacy survey. The authors focus on two key aspects of the cross-correlation study: first, the contrast in the cluster-galaxy cross-correlation when the galaxies are split into quiescent and star-forming subgroups, and second, an alternative method for measuring the red-sequence using the integrated cluster-galaxy cross-correlation out to 500 kpc.
+
+Overall, the manuscript represents an important contribution to the field in light of the latest cluster and galaxy catalogs, allowing for unprecedented SNR in the cross-correlation measurements. The central results are interesting and will advance the modeling of the galaxy-halo connection and galaxy formation and evolution physics. The model-independent red sequence measurement technique is noteworthy and could have broad applications for future datasets. However, the authors should address the following points before I recommend publication:
+
+1) While the manuscript is generally well-written, specific parts are poorly organized, making it very difficult to follow the analysis flow.
+For example, the authors use different cuts in the cluster and galaxy samples in each analysis, and the descriptions are spread out in the text throughout Section 2.
+The different cluster and galaxy samples used in the paper should be summarized clearly in a table.
+
+Answer:
+Indeed, thank you for pointing this out. We added a table at the end in section 2 with the samples considered so the reader can grasp easily the information.
+
+2) The figures, especially Figs 1 and 2, which represent the main analysis, need a lot of work.
+They should be updated to make them more legible and less cluttered.
+The text font on the figures is too small, and the different linestyles are hard to differentiate.
+Some legends are repeated without reason across panels, while some panels leave a lot of white space, and the lines are squeezed against each other.
+
+Answer:
+Indeed, it is hard to see. We have updated the figures accordingly, removing less useful lines.
+
+3) On the right panel of Fig. 2, the curves do not seem to asymptote to the ratio of the biases on the largest scales plotted, even though the text says it does.
+Why is this? Why not plot out to larger r to check this?
+
+The clustering measurements for the clusters is limited to.
+NEED TO RECOMPUTE UNCERTAINTIES WITH A JACKKNIFE
+COMPUTE HEALPIX map, select 10% of pixels, remove in all samples, recompute clustering, repeat 1000 times
+Do it for various healpix scales.
+LOOK at number of pairs vs. scales in the XCORR, suggest a cut-off scale.
+
+4) I strongly recommend adding an appendix to demonstrate the robustness of the uncertainty estimation.
+As the authors demonstrate, there is possibly a large gain in SNR compared to Zu and Weinberg, so this is central to the entire analysis.
+How did the authors convince themselves that the bootstrap outlined in Sec 3.1 is good enough to estimate the covariance matrix and the required level of accuracy?
+Have the authors checked against varying the fraction and the number of bootstrap draws?
+Why not use a jackknife?
+
+NEED TO RECOMPUTE UNCERTAINTIES WITH A JACKKNIFE
+
+5) Similarly, it would be good to present, maybe again in an appendix,
+the claim that the Davis and Peebles estimator does a good job out to 500 kpc for the specific numbers in this paper.
+
+
+6) The results in 3.1 are interesting, and to strengthen their paper, the authors should discuss the implications in more detail than the last paragraph of the subsection.
+
+
+7) The authors mention in the Introduction that "Although the signal-to-noise ratio in the summary statistics previously measured was high,
+no study explored a possible trend as a function of galaxy properties, like colors or star formation rate."
+This is not quite true, especially since the authors themselves mention the connection between the profile and cross-correlations in the same paragraph.
+Relevant studies in a similar cluster mass range, but with different selections, include
+https://ui.adsabs.harvard.edu/abs/2021ApJ...923...37A/abstract and
+https://ui.adsabs.harvard.edu/abs/2017ApJ...841...18B/abstract.
+
+
+
+
+=================
+
+Before resubmitting your manuscript, please take the time to verify the following common language and formatting issues.
+
+1) Please note the spelling convention (US or UK) of your paper and run a spell check specific to your preference (see the A&A language guide for authors, Sect. 2.1, for common spelling and punctuation differences between these two conventions).
+2) Check that abbreviations and acronyms are introduced correctly (see Sect. 5.2.4).
+3) Check your reference format (see Sect. 3.6.2).
+
+The A&A language guide for authors is available at https://www.aanda.org/for-authors/language-editing/1-introduction.
+
+For general information on publishing with A&A, please see the A&A author's guide, available at
+https://www.aanda.org/for-authors/author-information/paper-organization.

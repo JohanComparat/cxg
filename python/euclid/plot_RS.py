@@ -52,6 +52,7 @@ h = 0.6774
 L_box = 1000.0 / h
 cosmo = cosmoUNIT
 
+os.environ['GIT_STMOD_DATA'] = os.path.join(os.environ['USERPROFILE'], "Documents\Shared\software\st_mod_data") # visible in this process + all children
 
 RS_model = Table.read( os.path.join( os.environ['GIT_STMOD_DATA'], 'data', 'models', 'model_GAL', 'legacy_dr10_south_v0.3_grz_z_cal_zspec_redgals_model.fit') )
 z_RS = np.hstack(( RS_model['nodes'][0] ))

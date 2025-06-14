@@ -52,6 +52,7 @@ h = 0.6774
 L_box = 1000.0 / h
 cosmo = cosmoUNIT
 
+os.environ['GIT_STMOD_DATA'] = os.path.join(os.environ['USERPROFILE'], "Documents\Shared\software\st_mod_data") # visible in this process + all children
 
 fig_dir  ='../../figures/'
 dat_dir  ='../../data/'
