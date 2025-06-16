@@ -43,7 +43,7 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_fil
 	#print('bins', bins, bins.shape)
 	x = (bins[1:]+bins[:-1])/2.
 	cosmology = 2
-	nthreads = 16
+	nthreads = 32
 	# Auto pairs counts in DD
 	autocorr=1
 	DD_counts = DDrppi_mocks(autocorr, cosmology, nthreads, pimax, bins,
