@@ -142,7 +142,7 @@ for NSIDE in NSIDES:
 		N_select = int(len(U_NSIDE_list)*0.9)
 		pixels_keep = choice(U_NSIDE_list, size=N_select, replace=False)#, p=None)
 		D_in = np.isin(DDD['HPX_' + NSIDE_str], pixels_keep)
-		R_in = np.isin(RRR['HPX_' + NSIDE_str, pixels_keep)
+		R_in = np.isin(RRR['HPX_' + NSIDE_str], pixels_keep)
 		p_2_2PCF = os.path.join(JK_dir, sys.argv[5] + '_NSIDE_' + NSIDE_str + '_J_'+str(jk_i).zfill(4) + '.fits')
 		tabulate_wprp_clustering_noW(
 			DDD['RA'][D_in], DDD['DEC'][D_in], DDD['BEST_Z'][D_in],
