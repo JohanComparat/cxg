@@ -99,12 +99,12 @@ for NSIDE in NSIDES:
 		rand['keep_HPX_'+NSIDE_str]  = True
 
 data_keep = ( data1['keep_HPX_04'] ) & ( data1['keep_HPX_08'] ) & ( data1['keep_HPX_16'] ) & ( data1['LPH_MASS_BEST'] > Ms_min) & (data1['BEST_Z']>=z_min) & (data1['BEST_Z']<=z_max)
-rand_keep = ( rand['keep_HPX_04'] ) & ( rand['keep_HPX_08'] ) & ( rand['keep_HPX_16'] )& ( rand['LPH_MASS_BEST'] > Ms_min) & (rand['Z']>=z_min) & (rand['Z']<=z_max)
+rand_keep = ( rand['keep_HPX_04'] ) & ( rand['keep_HPX_08'] ) & ( rand['keep_HPX_16'] )& (rand['Z']>=z_min) & (rand['Z']<=z_max)
 
 t0 = time.time()
 print('before masking ND, NR = ', len(data1), len(rand))
 DDD = data1[ (data_keep) ]
-RRR = rand[  (rand_keep)  ]
+RRR = rand[  (rand_keep) ]
 
 N_gal = len(DDD)
 N_RD = len(RRR)
