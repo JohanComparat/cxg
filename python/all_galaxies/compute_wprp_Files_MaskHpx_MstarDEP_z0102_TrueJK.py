@@ -50,6 +50,7 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_fil
 								np.array(list(RA)).astype('float'),
 								np.array(list(DEC)).astype('float'),
 								np.array(list(CZ)).astype('float'))
+	print('DD', DD_counts['npairs'])
 	# Auto pairs counts in DR
 	autocorr=0
 	DR_counts = DDrppi_mocks(autocorr, cosmology, nthreads, pimax, bins,
@@ -59,13 +60,14 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_fil
 							RA2 =rand_RA.astype('float'),
 							DEC2=rand_DEC.astype('float'),
 							CZ2 =rand_CZ.astype('float'))
+	print('DR', DR_counts['npairs'])
 	# Auto pairs counts in RR
 	autocorr=1
 	RR_counts = DDrppi_mocks(autocorr, cosmology, nthreads, pimax, bins,
 							rand_RA.astype('float'),
 							rand_DEC.astype('float'),
 							rand_CZ.astype('float'))
-	#print('RR',RR_counts['npairs'])
+	print('RR',RR_counts['npairs'])
 	# All the pair counts are done, get the angular correlation function
 	wp = convert_rp_pi_counts_to_wp(N, N, rand_N, rand_N, DD_counts, DR_counts, DR_counts, RR_counts, nbins, pimax)
 	t = Table()
@@ -76,7 +78,7 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_fil
 	t.add_column(Column(data = np.ones_like(x) * N, name='N_data', unit=''  ) )
 	t.add_column(Column(data = np.ones_like(x) * rand_N, name='N_random', unit=''  ) )
 	t.add_column(Column(data = np.ones_like(x) * pimax, name='pimax', unit=''  ) )
-	print(out_file)
+	#print(out_file)
 	t.write(out_file, overwrite=True, format='fits')
 	print(out_file, time.time()-t0, 's')
 
@@ -136,13 +138,17 @@ for NSIDE in NSIDES:
 
 NSIDES = [2, 4, 8, 16, 32]
 for NSIDE in NSIDES:
+	print('='*100)
+	print(NSIDE)
 	NSIDE_str = str(NSIDE).zfill(2)
 	for jk_i in np.arange(100):
+		print(jk_i)
 		U_NSIDE_list = np.unique(DDD['HPX_' + NSIDE_str])
 		N_select = int(len(U_NSIDE_list)*0.9)
 		pixels_keep = choice(U_NSIDE_list, size=N_select, replace=False)#, p=None)
 		D_in = np.isin(DDD['HPX_' + NSIDE_str], pixels_keep)
 		R_in = np.isin(RRR['HPX_' + NSIDE_str], pixels_keep)
+		print(len(U_NSIDE_list), N_select, len(pixels_keep), pixels_keep[:15], len(DDD['RA'][D_in])/len(DDD['RA']), len(RRR['RA'][R_in])/len(RRR['RA']))
 		p_2_2PCF = os.path.join(JK_dir, sys.argv[5] + '_NSIDE_' + NSIDE_str + '_J_'+str(jk_i).zfill(4) + '.fits')
 		tabulate_wprp_clustering_noW(
 			DDD['RA'][D_in], DDD['DEC'][D_in], DDD['BEST_Z'][D_in],
