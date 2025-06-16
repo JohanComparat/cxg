@@ -127,7 +127,7 @@ if os.path.isfile(p_2_2PCF)==False :
 		tabulate_wprp_clustering_noW(
 			DDD['RA'], DDD['DEC'], DDD['BEST_Z'], RRR['RA'] , RRR['DEC'], RRR['Z'],
 			out_file=p_2_2PCF+'.fits', pimax = 100.0)
-		except(RuntimeError):
+	except(RuntimeError):
 		print('RuntimeError')
 
 NSIDES = [2, 4, 8, 16, 32]
