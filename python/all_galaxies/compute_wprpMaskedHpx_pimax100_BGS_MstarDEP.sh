@@ -1,5 +1,11 @@
 #!/bin/bash
 
+python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
+"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+"LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238_DATA.fits" \
+"LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238_RAND.fits" \
+"LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.25-wprp-pimax100-bin0p05-HpxMask-01z02" 10.25 0.1 0.2
+
 
 python compute_wprp_Files_MaskHpx_MstarDEP.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
