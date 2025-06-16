@@ -127,7 +127,7 @@ if os.path.isfile(p_2_2PCF)==False :
 		tabulate_wprp_clustering_noW(
 			DDD['RA'], DDD['DEC'], DDD['BEST_Z'], RRR['RA'] , RRR['DEC'], RRR['Z'],
 			out_file=p_2_2PCF+'.fits', pimax = 100.0)
-	except(RuntimeError):
+		except(RuntimeError):
 		print('RuntimeError')
 
 NSIDES = [2, 4, 8, 16, 32]
@@ -150,7 +150,12 @@ for NSIDE in NSIDES:
 		R_in = np.isin(RRR['HPX_' + NSIDE_str], pixels_keep)
 		print(len(U_NSIDE_list), N_select, len(pixels_keep), pixels_keep[:15], len(DDD['RA'][D_in]), len(DDD['RA'][D_in])/len(DDD['RA']), len(RRR['RA'][R_in])/len(RRR['RA']))
 		p_2_2PCF = os.path.join(JK_dir, sys.argv[5] + '_NSIDE_' + NSIDE_str + '_J_'+str(jk_i).zfill(4) + '.fits')
-		tabulate_wprp_clustering_noW(
-			DDD['RA'][D_in], DDD['DEC'][D_in], DDD['BEST_Z'][D_in],
-			RRR['RA'][R_in], RRR['DEC'][R_in], RRR['Z'][R_in],
-			out_file=p_2_2PCF , pimax=100.0)
+		print(os.path.basename(p_2_2PCF))
+		try:
+			if os.path.isfile(p_2_2PCF) == False:
+				tabulate_wprp_clustering_noW(
+					DDD['RA'][D_in], DDD['DEC'][D_in], DDD['BEST_Z'][D_in],
+					RRR['RA'][R_in], RRR['DEC'][R_in], RRR['Z'][R_in],
+					out_file=p_2_2PCF , pimax=100.0)
+		except(RuntimeError):
+			print('RuntimeError')
