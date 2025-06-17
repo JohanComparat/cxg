@@ -28,9 +28,8 @@ p2_data   = sys.argv[3]
 p2_random = sys.argv[4]
 p_2_2PCF  = os.path.join(topdir, sys.argv[5])
 basename = sys.argv[5].split('-')[0][9:]
-Ms_min = float(sys.argv[6])
-z_min = float(sys.argv[7])
-z_max = float(sys.argv[8])
+z_min = float(sys.argv[6])
+z_max = float(sys.argv[7])
 
 def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_file='test.fits', pimax = 100.0 ):
 	CZ = Z * speed_light
@@ -100,7 +99,7 @@ for NSIDE in NSIDES:
 		data1['keep_HPX_'+NSIDE_str] = True
 		rand['keep_HPX_'+NSIDE_str]  = True
 
-data_keep = ( data1['keep_HPX_04'] ) & ( data1['keep_HPX_08'] ) & ( data1['keep_HPX_16'] ) & ( data1['LPH_MASS_BEST'] > Ms_min) & (data1['BEST_Z']>=z_min) & (data1['BEST_Z']<=z_max)
+data_keep = ( data1['keep_HPX_04'] ) & ( data1['keep_HPX_08'] ) & ( data1['keep_HPX_16'] ) & (data1['BEST_Z']>=z_min) & (data1['BEST_Z']<=z_max)
 rand_keep = ( rand['keep_HPX_04'] ) & ( rand['keep_HPX_08'] ) & ( rand['keep_HPX_16'] )& (rand['Z']>=z_min) & (rand['Z']<=z_max)
 
 t0 = time.time()
