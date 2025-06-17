@@ -136,7 +136,7 @@ for NSIDE in NSIDES:
 	DDD['HPX_'+NSIDE_str] = healpy.ang2pix(NSIDE, np.pi/2. - DDD['DEC']*np.pi/180. , DDD['RA']*np.pi/180. , nest=True)
 	RRR['HPX_'+NSIDE_str]  = healpy.ang2pix(NSIDE, np.pi/2. - RRR['DEC']*np.pi/180. , RRR['RA']*np.pi/180. , nest=True)
 
-NSIDES = [2, 4, 8, 16, 32]
+NSIDES = [4, 8, 16, 32, 2]
 for NSIDE in NSIDES:
 	print('='*100)
 	print(NSIDE)

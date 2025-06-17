@@ -14,12 +14,11 @@ nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
 "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
 "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p05-HpxMask.fits" 11.0 0.1 0.3 > log_1075_jk.log &
 
+cd ~/software/cxg/data/
+rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_JK_wprp100 .
+rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_JK_wprp100 .
 
-
-
-
-
-
+python plot_JK_wprp.py
 
 python compute_wprp_Files_MaskHpx_MstarDEP.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
