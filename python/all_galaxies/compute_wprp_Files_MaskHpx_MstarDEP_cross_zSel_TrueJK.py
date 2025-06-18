@@ -18,6 +18,7 @@ from Corrfunc.mocks.DDrppi_mocks import DDrppi_mocks
 from Corrfunc.io import read_catalog
 from Corrfunc.utils import convert_rp_pi_counts_to_wp
 from Corrfunc.theory.DD import DD
+from numpy.random import choice
 
 pimax = int(sys.argv[1])
 topdir    = sys.argv[2]
