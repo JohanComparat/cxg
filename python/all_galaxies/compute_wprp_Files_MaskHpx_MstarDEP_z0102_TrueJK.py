@@ -30,7 +30,7 @@ p_2_2PCF  = os.path.join(topdir, sys.argv[5])
 basename = sys.argv[5].split('-')[0][9:]
 z_min = float(sys.argv[6])
 z_max = float(sys.argv[7])
-
+NSIDE_val = int(sys.argv[8])
 def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, out_file='test.fits', pimax = 100.0 ):
 	CZ = Z * speed_light
 	rand_CZ = rand_Z * speed_light
@@ -135,26 +135,24 @@ for NSIDE in NSIDES:
 	DDD['HPX_'+NSIDE_str] = healpy.ang2pix(NSIDE, np.pi/2. - DDD['DEC']*np.pi/180. , DDD['RA']*np.pi/180. , nest=True)
 	RRR['HPX_'+NSIDE_str]  = healpy.ang2pix(NSIDE, np.pi/2. - RRR['DEC']*np.pi/180. , RRR['RA']*np.pi/180. , nest=True)
 
-NSIDES = [4, 8, 16, 32, 2]
-for NSIDE in NSIDES:
-	print('='*100)
-	print(NSIDE)
-	NSIDE_str = str(NSIDE).zfill(2)
-	for jk_i in np.arange(100):
-		print(jk_i)
+#NSIDES = [4, 8, 16, 32, 2]
+#for NSIDE in NSIDES:
+NSIDE = NSIDE_val
+print('='*100)
+print(NSIDE)
+NSIDE_str = str(NSIDE).zfill(2)
+for jk_i in np.arange(100):
+	print(jk_i)
+	p_2_2PCF = os.path.join(JK_dir, sys.argv[5] + '_NSIDE_' + NSIDE_str + '_J_'+str(jk_i).zfill(4) + '.fits')
+	if os.path.isfile(p_2_2PCF) == False:
 		U_NSIDE_list = np.unique(DDD['HPX_' + NSIDE_str])
 		N_select = int(len(U_NSIDE_list)*0.9)
 		pixels_keep = choice(U_NSIDE_list, size=N_select, replace=False)#, p=None)
 		D_in = np.isin(DDD['HPX_' + NSIDE_str], pixels_keep)
 		R_in = np.isin(RRR['HPX_' + NSIDE_str], pixels_keep)
 		print(len(U_NSIDE_list), N_select, len(pixels_keep), pixels_keep[:15], len(DDD['RA'][D_in]), len(DDD['RA'][D_in])/len(DDD['RA']), len(RRR['RA'][R_in])/len(RRR['RA']))
-		p_2_2PCF = os.path.join(JK_dir, sys.argv[5] + '_NSIDE_' + NSIDE_str + '_J_'+str(jk_i).zfill(4) + '.fits')
 		print(os.path.basename(p_2_2PCF))
-		try:
-			if os.path.isfile(p_2_2PCF) == False:
-				tabulate_wprp_clustering_noW(
-					DDD['RA'][D_in], DDD['DEC'][D_in], DDD['BEST_Z'][D_in],
-					RRR['RA'][R_in], RRR['DEC'][R_in], RRR['Z'][R_in],
-					out_file=p_2_2PCF , pimax=100.0)
-		except(RuntimeError):
-			print('RuntimeError')
+		tabulate_wprp_clustering_noW(
+			DDD['RA'][D_in], DDD['DEC'][D_in], DDD['BEST_Z'][D_in],
+			RRR['RA'][R_in], RRR['DEC'][R_in], RRR['Z'][R_in],
+			out_file=p_2_2PCF , pimax=100.0)
