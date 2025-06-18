@@ -2,29 +2,55 @@
 export OMP_NUM_THREADS=32
 cd ~/software/cxg/python/all_galaxies
 
-nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
-"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02" 0.1 0.2 4 > log_1025_jk_4.log &
+#nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
+#"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02" 0.1 0.2 2 > log_1025_jk_2.log &
+#
+#nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
+#"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02" 0.1 0.2 4 > log_1025_jk_4.log &
+#
+#nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
+#"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02" 0.1 0.2 8 > log_1025_jk_8.log &
+#
+#nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
+#"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
+#"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02" 0.1 0.2 16 > log_1025_jk_16.log &
+#
+#nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
+#"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+#"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
+#"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
+#"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03" 0.1 0.3 2 > log_1075_jk_2.log &
+#
+#nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
+#"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+#"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
+#"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
+#"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03" 0.1 0.3 4 > log_1075_jk_4.log &
 
-nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
-"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02" 0.1 0.2 8 > log_1025_jk_8.log &
-
-nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
-"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_DATA.fits" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_RAND.fits" \
-"LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02" 0.1 0.2 16 > log_1025_jk_16.log &
-
+# TODO
 nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
 "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
 "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
-"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask.fits" 0.1 0.3 > log_1075_jk.log &
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03" 0.1 0.3 8 > log_1075_jk_8.log &
+
+# TODO
+nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
+"/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_DATA.fits" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_RAND.fits" \
+"LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03" 0.1 0.3 16 > log_1075_jk_16.log &
 
 cd ~/software/cxg/data/
 rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_JK_wprp100 .
