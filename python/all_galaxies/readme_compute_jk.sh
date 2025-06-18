@@ -60,14 +60,10 @@ rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/_ANY_10.25_M
 
 python plot_JK_wprp.py
 
-
-
 Galaxy-Cluster cross-correlation JK in the correct redshift bin
-
 
 export OMP_NUM_THREADS=32
 cd ~/software/cxg/python/all_galaxies
-
 
 python compute_wprp_Files_MaskHpx_MstarDEP_cross_zSel_TrueJK.py 100 \
 "/data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar" \
