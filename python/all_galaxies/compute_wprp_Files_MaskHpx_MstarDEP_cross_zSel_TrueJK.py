@@ -34,6 +34,7 @@ z_min = float(sys.argv[10])
 z_max = float(sys.argv[11])
 NSIDE_val = int(sys.argv[12])
 out_subfolder = sys.argv[13]
+bin_size = float(sys.argv[14])
 
 JK_dir = os.path.join(topdir, out_subfolder)
 os.system('mkdir -p '+JK_dir)
@@ -41,7 +42,7 @@ print(JK_dir)
 #p_2_2PCF  = os.path.join(JK_dir, PCF_basename)
 
 
-def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, RA2, DEC2, Z2, rand_RA2 , rand_DEC2, rand_Z2, out_file='test.fits', pimax = 100.0, N_JK=100 ):
+def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, RA2, DEC2, Z2, rand_RA2 , rand_DEC2, rand_Z2, out_file='test.fits', pimax = 100.0, bin_size= bin_size ):
 	CZ = Z * speed_light
 	rand_CZ = rand_Z * speed_light
 	CZ2 = Z2 * speed_light
@@ -51,7 +52,7 @@ def tabulate_wprp_clustering_noW(RA, DEC, Z, rand_RA , rand_DEC, rand_Z, RA2, DE
 	N2 = len(RA2)
 	rand_N2 = len(rand_RA2)
 	#print(N, rand_N, out_file, time.time()-t0)
-	bins = 10**np.arange(-2.0, 1.81, 0.1)
+	bins = 10**np.arange(-2.0, 1.81, bin_size)
 	nbins = len(bins)-1
 	#print('bins', bins, bins.shape)
 	x = (bins[1:]+bins[:-1])/2.
