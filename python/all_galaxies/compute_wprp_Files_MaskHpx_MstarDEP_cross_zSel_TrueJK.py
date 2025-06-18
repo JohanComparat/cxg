@@ -202,7 +202,7 @@ NSIDE = NSIDE_val
 print('='*100)
 print(NSIDE)
 NSIDE_str = str(NSIDE).zfill(2)
-for jk_i in np.arange(100):
+for jk_i in np.arange(1000):
 	p_2_2PCF = os.path.join(JK_dir, PCF_basename + '_NSIDE_' + NSIDE_str + '_J_'+str(jk_i).zfill(4) + '.fits')
 	print(jk_i, p_2_2PCF, os.path.isfile(p_2_2PCF))
 	if os.path.isfile(p_2_2PCF) == False:

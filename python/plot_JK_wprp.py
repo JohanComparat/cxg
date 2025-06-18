@@ -17,6 +17,8 @@ fig_dir  ='../figures/'
 
 d1025 = '../data/_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_JK_wprp100'
 d1075 = '../data/_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_JK_wprp100'
+dC0xG1025 = '../data/C0xG1025'
+dC1xG1075 = '../data/C1xG1075'
 
 # "C:\Users\Johan Comparat\Documents\Shared\software\st_mod_data\data"
 # export GIT_STMOD_DATA='/home/idies/workspace/erosim/software/st_mod_data'
@@ -163,7 +165,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), label='nside 4')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), label='nside 4 auto, N='+str(len(pcf_list_1075)))
 
 # pcf_list_1075 = np.array( glob.glob( os.path.join( d1075, '*NSIDE_08*.fits' )))
 # all_wprp = []
@@ -173,9 +175,17 @@ plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), label='nsi
 # t_ref = Table.read(el)
 # plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), label='nside 8')
 
+pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*NSIDE_04*.fits' )))
+all_wprp = []
+for el in pcf_list_1075 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+t_ref = Table.read(el)
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='solid', label='C1 x G1075, N='+str(len(pcf_list_1075)), color='black')
+
 t_wp = CxG["S1_ANY_10.75"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='C0 x G1025', color='black')
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='dashed', color='black') # , label='C0 x G1025'
 t_wp = CxG["S1_BC_10.75"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='blue-cloud', color='darkblue')
@@ -218,11 +228,19 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), label='nside 4')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), label='nside 4 auto, N='+str(len(pcf_list_1075)))
+
+pcf_list_1075 = np.array( glob.glob( os.path.join( dC0xG1025, '*NSIDE_04*.fits' )))
+all_wprp = []
+for el in pcf_list_1075 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+t_ref = Table.read(el)
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='solid', label='C0 x G1025, N='+str(len(pcf_list_1075)), color='black')
 
 t_wp = CxG["S0_ANY_10.25"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='C0 x G1025', color='black')
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='dashed', color='black') # , label='C0 x G1025'
 t_wp = CxG["S0_BC_10.25"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='blue-cloud', color='darkblue')
