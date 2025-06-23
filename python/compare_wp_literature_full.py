@@ -50,42 +50,69 @@ ZuMa["wprp_9.4_M_9.8"]   = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_9.4_M_9
 ZuMa["wprp_9.8_M_10.2"]  = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_9.8_M_10.2_measurements.txt" ), unpack = True)
 
 BGS = {}
+#BGS["ANY_9.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_9.0_Mstar_12.0_0.05_z_0.08_N_0523486-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
+#BGS["ANY_9.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_9.5_Mstar_12.0_0.05_z_0.12_N_1432502-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
+BGS["ANY_10.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-wprp-pimax100-bin0p05-HpxMask.fits" ) )
 BGS["ANY_10.25"] = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask.fits") )
+BGS["ANY_10.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p05-HpxMask.fits" ) )
 BGS["ANY_10.75"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask.fits" ) )
+BGS["ANY_11.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p05-HpxMask.fits" ) )
+BGS["ANY_11.25"] = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_11.25_Mstar_12.0_0.05_z_0.35_N_0541855-wprp-pimax100-bin0p05-HpxMask.fits") )
+BGS["ANY_11.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p05-HpxMask.fits" ) )
 
+BGS["RS_10.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.0-wprp-pimax100-bin0p1-HpxMask.fits" ) )
 BGS["RS_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+BGS["RS_10.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-MstarMin_10.5-wprp-pimax100-bin0p1-HpxMask.fits" ) )
 BGS["RS_10.75"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+BGS["RS_11.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p05-HpxMask.fits" ) )
+BGS["RS_11.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p05-HpxMask.fits" ) )
 
+BGS["BC_10.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.0-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
 BGS["BC_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+BGS["BC_10.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-MstarMin_10.5-wprp-pimax100-bin0p1-HpxMask.fits" ) )
 BGS["BC_10.75"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+BGS["BC_11.0"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p05-HpxMask.fits" ) )
+BGS["BC_11.5"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p05-HpxMask.fits" ) )
+##BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.0-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.5-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_11.0-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##BC_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_11.25-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##BC_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##BC_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##RS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##RS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.5-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##RS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##RS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_11.0-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##RS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-MstarMin_11.25-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##RS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##RS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-MstarMin_10.75-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##eRASS1_VLIM_CLUSTERS_S3_CROSS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##eRASS1_VLIM_CLUSTERS_S3_CROSS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask_JK.fits
+##eRASS1_VLIM_CLUSTERS_S3_CROSS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p1-HpxMask_JK.fits
 
-CLU={}
-CLU["S0_0.05_z_0.22"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.22-wprp-pimax100-bin0p1.fits"  ) )
-CLU["S0_0.05_z_0.35"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.35-wprp-pimax100-bin0p1.fits"  ) )
 
-CLU["S1_0.05_z_0.31"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S1_0.05_z_0.31-wprp-pimax100-bin0p1.fits"  ) )
-CLU["S1_0.05_z_0.35"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S1_0.05_z_0.35-wprp-pimax100-bin0p1.fits"  ) )
+# # plot wprp
+# p2_fig = os.path.join( fig_dir, 'wprp-obs-M100-ANY-BC-RS.png')
+# plt.figure(12, (5,5))
+# t_wp = BGS["ANY_10.0"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=4,  ls='solid', label='10<M*<12, N='+str(int(t_wp['N_data'][0])), color='black')
+# t_wp = BGS["RS_10.0"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=3,  ls='dashed', label='red-sequence, N='+str(int(t_wp['N_data'][0])), color='darkred')
+# t_wp = BGS["BC_10.0"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=3,  ls='dashed', label='blue-cloud, N='+str(int(t_wp['N_data'][0])), color='darkblue')
+# plt.xscale('log')
+# plt.yscale('log')
+# plt.xlabel(r"$r_p$ [Mpc/h]")
+# plt.ylabel(r"$w_p(r_p)$ [Mpc/h]")
+# plt.legend(loc=3, fontsize=12, title='LS10, r<19.5, 0.05<z<0.18')
+# plt.tight_layout()
+# plt.savefig(p2_fig)
+# plt.clf()
+# print(p2_fig)
 
-CxG={}
-CxG["S0_ANY_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
-CxG["S0_BC_10.25"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_BC_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
-CxG["S0_RS_10.25"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_RS_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
-
-CxG["S1_ANY_10.75"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
-CxG["S1_BC_10.75"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_BC_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
-CxG["S1_RS_10.75"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_RS_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
-
-z13_r, z13_wp, z13_wp_up = np.loadtxt('../data/zu-weinberg-fig13-red-datapoints-M1140-M1190.csv', unpack=True, delimiter=',')
-z13_wp_ferr = z13_wp_up/z13_wp-1
-
-
-#
-#
-# Galaxies alone
-#
-#
-
-# plot wprp 1025
+# plot wprp
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M1025-ANY-BC-RS.png')
 plt.figure(11, (6,5))
 
@@ -93,9 +120,8 @@ t_ref = BGS["ANY_10.25"]
 itp_ref = interp1d(t_ref['rp_mid'], t_ref['wprp'])
 t_wp = Table.read( os.path.join( d1025, 'LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02.fits' ) )
 s_5_20 = (t_wp['rp_mid']>=5)&(t_wp['rp_mid']<=20)
-# print('1025 b corr',t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20]), np.mean(t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20])))
+print('1025 b corr',t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20]), np.mean(t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20])))
 b_corr_1025 = np.mean(t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20])) **0.5
-print('1025 b corr',b_corr_1025)
 pcf_list = np.array( glob.glob( os.path.join( d1025, '*NSIDE_08*.fits' )))
 all_wprp = []
 for el in pcf_list :
@@ -140,17 +166,18 @@ plt.clf()
 print(p2_fig)
 
 
-# plot wprp 1075
+# plot wprp
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M1075-ANY-BC-RS.png')
 plt.figure(11, (6,5))
+
+
 
 itp_ref = interp1d(t_ref['rp_mid'], t_ref['wprp'])
 t_wp = Table.read( os.path.join( d1075, 'LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03.fits' ) )
 s_5_20 = (t_wp['rp_mid']>=5)&(t_wp['rp_mid']<=20)
-# print('1075 b corr', t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20]), np.mean(t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20])))
-b_corr_1075 = np.mean(t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20])) **0.5
-print('1075 b corr',b_corr_1075)
-t_wp = Table.read( os.path.join( d1075, 'LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03.fits' ) )
+print('1075 b corr', t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20]), np.mean(t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20])))
+b_corr_1025 = np.mean(t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20])) **0.5
+
 pcf_list = np.array( glob.glob( os.path.join( d1075, '*NSIDE_08*.fits' )))
 all_wprp = []
 for el in pcf_list :
@@ -193,8 +220,147 @@ plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
 print(p2_fig)
+#
+# # plot wprp
+# p2_fig = os.path.join( fig_dir, 'wprp-obs-M105-ANY-BC-RS.png')
+# plt.figure(12, (5,5))
+# t_wp = BGS["ANY_10.5"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=4,  ls='solid', label='10.5<M*<12, N='+str(int(t_wp['N_data'][0])), color='black')
+# t_wp = BGS["RS_10.5"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=3,  ls='dashed', label='red-sequence, N='+str(int(t_wp['N_data'][0])), color='darkred')
+# t_wp = BGS["BC_10.5"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=3,  ls='dashed', label='blue-cloud, N='+str(int(t_wp['N_data'][0])), color='darkblue')
+# plt.xscale('log')
+# plt.yscale('log')
+# plt.xlabel(r"$r_p$ [Mpc/h]")
+# plt.ylabel(r"$w_p(r_p)$ [Mpc/h]")
+# plt.legend(loc=3, fontsize=12, title='LS10, r<19.5, 0.05<z<0.26')
+# plt.tight_layout()
+# plt.savefig(p2_fig)
+# plt.clf()
+# print(p2_fig)
+#
+#
+# # plot wprp
+# p2_fig = os.path.join( fig_dir, 'wprp-obs-M110-ANY-BC-RS.png')
+# plt.figure(12, (5,5))
+# t_wp = BGS["ANY_11.0"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=4,  ls='solid', label='11.0<M*<12, N='+str(int(t_wp['N_data'][0])), color='black')
+# t_wp = BGS["RS_11.0"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=3,  ls='dashed', label='red-sequence, N='+str(int(t_wp['N_data'][0])), color='darkred')
+# t_wp = BGS["BC_11.0"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=3,  ls='dashed', label='blue-cloud, N='+str(int(t_wp['N_data'][0])), color='darkblue')
+# plt.xscale('log')
+# plt.yscale('log')
+# plt.xlabel(r"$r_p$ [Mpc/h]")
+# plt.ylabel(r"$w_p(r_p)$ [Mpc/h]")
+# plt.legend(loc=3, fontsize=12, title='LS10, r<19.5, 0.05<z<0.35')
+# plt.tight_layout()
+# plt.savefig(p2_fig)
+# plt.clf()
+# print(p2_fig)
+#
+#
+# # plot wprp
+# p2_fig = os.path.join( fig_dir, 'wprp-obs-M115-ANY-BC-RS.png')
+# plt.figure(12, (5,5))
+# t_wp = BGS["ANY_11.5"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=4,  ls='solid', label='11.5<M*<12, N='+str(int(t_wp['N_data'][0])), color='black')
+# t_wp = BGS["RS_11.5"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=3,  ls='dashed', label='red-sequence, N='+str(int(t_wp['N_data'][0])), color='darkred')
+# t_wp = BGS["BC_11.5"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp'], lw=3,  ls='dashed', label='blue-cloud, N='+str(int(t_wp['N_data'][0])), color='darkblue')
+# plt.xscale('log')
+# plt.yscale('log')
+# plt.xlabel(r"$r_p$ [Mpc/h]")
+# plt.ylabel(r"$w_p(r_p)$ [Mpc/h]")
+# plt.legend(loc=3, fontsize=12, title='LS10, r<19.5, 0.05<z<0.35')
+# plt.tight_layout()
+# plt.savefig(p2_fig)
+# plt.clf()
+# print(p2_fig)
 
 
+#uchuu_dir = os.path.join(os.environ['UCHUU'], "FullSky/mockBGS/replication_0.0_0.0_0.0" )
+#UCHUU = {}
+##UCHUU['ALL_9.0'] = Table.read(os.path.join(uchuu_dir, "UCHUU_VLIM_ANY_9.5_Mstar_12.0_0.05_z_0.12_0err_glist-wprp-pimax100-bin0p1.fits" ))
+##UCHUU['ALL_9.5'] = Table.read(os.path.join(uchuu_dir, "UCHUU_VLIM_ANY_9.0_Mstar_12.0_0.05_z_0.08_0err_glist-wprp-pimax100-bin0p1.fits" ))
+#UCHUU['ALL_10.0'] = Table.read(os.path.join(uchuu_dir, "UCHUU_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_0err_glist-wprp-pimax100-bin0p1.fits" ))
+#UCHUU['ALL_10.25'] = Table.read(os.path.join(uchuu_dir, "UCHUU_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_0err_glist-wprp-pimax100-bin0p1.fits" ))
+#UCHUU['ALL_10.5'] = Table.read(os.path.join(uchuu_dir, "UCHUU_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_0err_glist-wprp-pimax100-bin0p1.fits" ))
+#UCHUU['ALL_10.75'] = Table.read(os.path.join(uchuu_dir, "UCHUU_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_0err_glist-wprp-pimax100-bin0p1.fits" ))
+#UCHUU['ALL_11.0'] = Table.read(os.path.join(uchuu_dir, "UCHUU_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_0err_glist-wprp-pimax100-bin0p1.fits" ))
+#UCHUU['ALL_11.25'] = Table.read(os.path.join(uchuu_dir, "UCHUU_VLIM_ANY_11.25_Mstar_12.0_0.05_z_0.35_0err_glist-wprp-pimax100-bin0p1.fits" ))
+#UCHUU['ALL_11.5'] = Table.read(os.path.join(uchuu_dir, "UCHUU_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_0err_glist-wprp-pimax100-bin0p1.fits" ))
+CLU={}
+CLU["S0_0.05_z_0.18"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.18-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S0_0.05_z_0.22"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.22-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S0_0.05_z_0.26"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.26-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S0_0.05_z_0.35"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.35-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S1_0.05_z_0.18"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S1_0.05_z_0.18-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S1_0.05_z_0.26"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S1_0.05_z_0.26-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S1_0.05_z_0.31"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S1_0.05_z_0.31-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S1_0.05_z_0.35"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S1_0.05_z_0.35-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S2_0.05_z_0.18"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S2_0.05_z_0.18-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S2_0.05_z_0.26"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S2_0.05_z_0.26-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S2_0.05_z_0.35"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S2_0.05_z_0.35-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S3_0.05_z_0.18"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S3_0.05_z_0.18-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S3_0.05_z_0.26"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S3_0.05_z_0.26-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S3_0.05_z_0.35"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S3_0.05_z_0.35-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S4_0.05_z_0.18"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S4_0.05_z_0.18-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S4_0.05_z_0.26"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S4_0.05_z_0.26-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S4_0.05_z_0.35"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S4_0.05_z_0.35-wprp-pimax100-bin0p1.fits"  ) )
+CxG={}
+CxG["S0_ANY_10.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S0_ANY_10.25"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S0_ANY_10.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S0_ANY_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S0_ANY_11.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+
+CxG["S1_ANY_10.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S1_ANY_10.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S1_ANY_10.75"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S1_ANY_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S1_ANY_11.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+
+CxG["S2_ANY_10.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S2_CROSS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S2_ANY_10.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S2_CROSS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S2_ANY_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S2_CROSS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S2_ANY_11.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S2_CROSS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+
+CxG["S3_ANY_10.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S3_CROSS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S3_ANY_10.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S3_CROSS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
+CxG["S3_ANY_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S3_CROSS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
+CxG["S3_ANY_11.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S3_CROSS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
+
+CxG["S4_ANY_10.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S4_CROSS_LS10_VLIM_ANY_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
+CxG["S4_ANY_10.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S4_CROSS_LS10_VLIM_ANY_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
+CxG["S4_ANY_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S4_CROSS_LS10_VLIM_ANY_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
+CxG["S4_ANY_11.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S4_CROSS_LS10_VLIM_ANY_11.5_Mstar_12.0_0.05_z_0.35_N_0120882-wprp-pimax100-bin0p1-HpxMask.fits"  ) )
+
+CxG["S2_BC_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S2_CROSS_LS10_VLIM_BC_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask.fits" ) )
+CxG["S2_RS_11.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S2_CROSS_LS10_VLIM_RS_11.0_Mstar_12.0_0.05_z_0.35_N_1619838-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+
+CxG["S1_BC_10.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_BC_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask.fits" ) )
+CxG["S1_RS_10.5"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_RS_10.5_Mstar_12.0_0.05_z_0.26_N_3263228-wprp-pimax100-bin0p1-HpxMask.fits" ) )
+
+CxG["S0_BC_10.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_BC_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-wprp-pimax100-bin0p1-HpxMask.fits" ) )
+CxG["S0_RS_10.0"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_RS_10.0_Mstar_12.0_0.05_z_0.18_N_2759238-wprp-pimax100-bin0p1-HpxMask.fits" ) )
+
+
+
+CxG["S1_BC_10.75"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_BC_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+CxG["S1_RS_10.75"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S1_CROSS_LS10_VLIM_RS_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+
+CxG["S0_BC_10.25"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_BC_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+CxG["S0_RS_10.25"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_RS_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+
+
+z13_r, z13_wp, z13_wp_up = np.loadtxt('../data/zu-weinberg-fig13-red-datapoints-M1140-M1190.csv', unpack=True, delimiter=',')
+z13_wp_ferr = z13_wp_up/z13_wp-1
+#z13M1120_r, z13M1120_wp = np.loadtxt('../data/zu-weinberg-fig13-green-datapoints-M1120-M1140.csv', unpack=True, delimiter=',')
+#z13_x = z13_r[np.argsort(z13_r)]
+#z13_y = z13_xi[np.argsort(s06_r)]
 #
 #
 # S1 10.75
@@ -206,89 +372,55 @@ print(p2_fig)
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M1075-ANY-BC-RS-S1-clusters.png')
 plt.figure(3, (5., 5.))
 
+t_wp = BGS["ANY_10.75"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed',  label=r'G1075 x G1075', color='black')
+f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='black', alpha=0.4)
+t_wp = BGS["RS_10.75"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed', color='darkred')
+f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkred', alpha=0.4)
+t_wp = BGS["BC_10.75"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='dashed', color='darkblue')
+f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkblue', alpha=0.4)
 
-t_wp = Table.read( os.path.join( d1075, 'LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03.fits' ) )
-pcf_list = np.array( glob.glob( os.path.join( d1075, '*NSIDE_08*.fits' )))
-all_wprp = []
-for el in pcf_list :
-	all_wprp.append(Table.read(el)['wprp'])
-all_wprp = np.array(all_wprp)
-f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
-t_ref = BGS["ANY_10.75"]
-f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
-print(f_err,f_err_resamp)
-plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', label='G1075', color='black')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']* t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='black', alpha=0.4)
-
-
-# t_wp = BGS["RS_10.25"]
-t_wp = Table.read( os.path.join( d1075_RS, 'LS10_VLIM_RS_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03.fits' ) )
-pcf_list = np.array( glob.glob( os.path.join( d1075_RS, '*NSIDE_08*.fits' )))
-all_wprp = []
-for el in pcf_list :
-	all_wprp.append(Table.read(el)['wprp'])
-all_wprp = np.array(all_wprp)
-f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
-t_ref = BGS["RS_10.75"]
-f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
-print(f_err,f_err_resamp)
-plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', color='darkred')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='darkred', alpha=0.4)
-
-# t_wp = BGS["BC_10.25"]
-t_wp = Table.read( os.path.join( d1075_BC, 'LS10_VLIM_BC_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03.fits' ) )
-pcf_list = np.array( glob.glob( os.path.join( d1075_BC, '*NSIDE_08*.fits' )))
-all_wprp = []
-for el in pcf_list :
-	all_wprp.append(Table.read(el)['wprp'])
-all_wprp = np.array(all_wprp)
-f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
-t_ref = BGS["BC_10.75"]
-f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
-print(f_err,f_err_resamp)
-plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', color='darkblue')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='darkblue', alpha=0.4)
-
-t_wp = CLU["S1_0.05_z_0.31"]
-plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='solid', label=r'Clusters, $\log_{10}(L_X\; [\mathrm{erg/s}])>43.1$', color='orange')
-
-# t_ref = CxG["S1_ANY_10.75"]
+#t_wp = CLU["S1_0.05_z_0.31"]
+#plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='solid', label=r'Clusters, $\log_{10}(L_X\; [\mathrm{erg/s}])>43.1$', color='orange')
+t_wp = CxG["S1_ANY_10.75"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='solid', label='C1 x G1075', color='black')
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_ANY_*NSIDE_08*.fits' )))
 all_wprp = []
 for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
-t_wp = Table.read(el)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
 # f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'],all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', label='C1 x G1075', color='black')
-plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err), color='black', alpha=0.4)
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='black', alpha=0.4)
 
-# t_wp = CxG["S1_BC_10.75"]
+t_wp = CxG["S1_BC_10.75"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='solid', color='darkblue')
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_BC_*NSIDE_08*.fits' )))
 all_wprp = []
 for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
-t_wp = Table.read(el)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
 # f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkblue')
-plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err), color='darkblue', alpha=0.4)#, label='blue-cloud')
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkblue', alpha=0.4)#, label='blue-cloud')
 
 t_wp = CxG["S1_RS_10.75"]
+plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='solid', color='darkred')
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_RS_*NSIDE_08*.fits' )))
 all_wprp = []
 for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
-t_wp = Table.read(el)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
 # f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkred')
-plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err), color='darkred', alpha=0.4)#, label='red-sequence')
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid']*(1-f_err), t_wp['wprp']*t_wp['rp_mid']*(1+f_err), color='darkred', alpha=0.4)#, label='red-sequence')
 
-plt.plot(z13_r, z13_r*z13_wp, label='Zu 13 (M$^*\sim11.7$))', ls='dotted', lw=1, color='green', zorder=0)
+plt.plot(z13_r, z13_r*z13_wp, label='Zu 13 (M$^*\sim11.7$))', ls='dotted', lw=2, color='green', zorder=0)
 plt.fill_between(z13_r, z13_r*z13_wp*(1-z13_wp_ferr), z13_r*z13_wp*(1+z13_wp_ferr), color='green', alpha=0.4)
 
 plt.ylim((9, 2e3))
@@ -302,7 +434,6 @@ plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
 print(p2_fig)
-
 
 # plot wprp
 p2_fig = os.path.join( fig_dir, 'wprp-obs-M1075-ANY-BC-RS-S1-clusters-err.png')
