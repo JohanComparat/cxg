@@ -23,6 +23,7 @@ Indeed, it is hard to see. We have updated the figures accordingly, removing les
 3) On the right panel of Fig. 2, the curves do not seem to asymptote to the ratio of the biases on the largest scales plotted, even though the text says it does.
 Why is this? Why not plot out to larger r to check this?
 
+
 The clustering measurements for the clusters is limited to.
 NEED TO RECOMPUTE UNCERTAINTIES WITH A JACKKNIFE
 COMPUTE HEALPIX map, select 10% of pixels, remove in all samples, recompute clustering, repeat 1000 times
@@ -35,13 +36,20 @@ How did the authors convince themselves that the bootstrap outlined in Sec 3.1 i
 Have the authors checked against varying the fraction and the number of bootstrap draws?
 Why not use a jackknife?
 
-NEED TO RECOMPUTE UNCERTAINTIES WITH A JACKKNIFE
+Thank you for pointing this out.
+We have recomputed uncertainties with a jackknife procedure:
+we remove a 10% fraction of the area in all catalogs using healpix to randomly discard a set of pixels covering a total of 10% of the area.
+The drawing method was failing to capture the uncertainties on the largest scales (>10 Mpc/h), while below <10Mpc/h, the uncertainty estimation is basically the same.
+
+
+NEED TO RECOMPUTE UNCERTAINTIES WITH A JACKKNIFE. Errors are the same on Mpc scale and below, but then increase at large scales.
 
 5) Similarly, it would be good to present, maybe again in an appendix,
 the claim that the Davis and Peebles estimator does a good job out to 500 kpc for the specific numbers in this paper.
 
 
-6) The results in 3.1 are interesting, and to strengthen their paper, the authors should discuss the implications in more detail than the last paragraph of the subsection.
+6) The results in 3.1 are interesting, and to strengthen their paper, the authors should discuss the implications in more detail
+than the last paragraph of the subsection.
 
 
 7) The authors mention in the Introduction that "Although the signal-to-noise ratio in the summary statistics previously measured was high,
@@ -51,7 +59,7 @@ Relevant studies in a similar cluster mass range, but with different selections,
 https://ui.adsabs.harvard.edu/abs/2021ApJ...923...37A/abstract and
 https://ui.adsabs.harvard.edu/abs/2017ApJ...841...18B/abstract.
 
-
+Need to read and add to the paper.
 
 
 =================
