@@ -96,6 +96,8 @@ NSIDE = NSIDE_val
 print('='*100)
 print(NSIDE)
 NSIDE_str = str(NSIDE).zfill(2)
+rand['HPX_'+NSIDE_str] = healpy.ang2pix(NSIDE, np.pi/2. - rand['DEC']*np.pi/180. , rand['RA']*np.pi/180. , nest=True)
+data1['HPX_'+NSIDE_str]  = healpy.ang2pix(NSIDE, np.pi/2. - data1['DEC']*np.pi/180. , data1['RA']*np.pi/180. , nest=True)
 for jk_i in np.arange(1000):
 	p_2_2PCF = os.path.join(JK_dir, PCF_basename + '_NSIDE_' + NSIDE_str + '_J_'+str(jk_i).zfill(4) + '.fits')
 	print(jk_i, p_2_2PCF, os.path.isfile(p_2_2PCF))
