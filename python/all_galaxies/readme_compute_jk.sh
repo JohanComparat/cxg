@@ -54,6 +54,8 @@ nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
 
 # Cluster only
 
+export OMP_NUM_THREADS=32
+cd ~/software/cxg/python/all_galaxies
 
 nohup python compute_wprp_Files_CLU.py 100 \
 "/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \

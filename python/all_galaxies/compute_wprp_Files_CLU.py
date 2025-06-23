@@ -101,10 +101,9 @@ for jk_i in np.arange(1000):
 	p_2_2PCF = os.path.join(JK_dir, PCF_basename + '_NSIDE_' + NSIDE_str + '_J_'+str(jk_i).zfill(4) + '.fits')
 	print(jk_i, p_2_2PCF, os.path.isfile(p_2_2PCF))
 	if os.path.isfile(p_2_2PCF) == False:
-		U_NSIDE_list = np.unique(DDD['HPX_' + NSIDE_str])
+		U_NSIDE_list = np.unique(rand['HPX_' + NSIDE_str])
 		N_select = int(len(U_NSIDE_list)*0.9)
 		pixels_keep = choice(U_NSIDE_list, size=N_select, replace=False)#, p=None)
-n(RRR['HPX_' + NSIDE_str], pixels_keep)
 		data1_in = np.isin(data1['HPX_' + NSIDE_str], pixels_keep)
 		rand_in = np.isin(rand['HPX_' + NSIDE_str], pixels_keep)
 		print(len(U_NSIDE_list), N_select, len(pixels_keep), pixels_keep[:15],
