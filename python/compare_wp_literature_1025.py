@@ -150,7 +150,7 @@ all_wprp = np.array(all_wprp)
 t_wp = Table.read(el)
 s1 = (t_wp['rp_mid']>=1)
 f_err = all_wprp.std(axis=0)[s1]/all_wprp.mean(axis=0)[s1]
-f_err_tot = (f_err**2 + syst_err**2)**0.5
+f_err_tot = (f_err**2 )**0.5
 y_val = all_wprp.mean(axis=0)[s1]
 plt.plot(t_wp['rp_mid'][s1], t_wp['rp_mid'][s1] * y_val , lw=1,  ls='dashed', label='C0', color='orange')
 plt.fill_between(t_wp['rp_mid'][s1], t_wp['rp_mid'][s1] * y_val*(1-f_err_tot), t_wp['rp_mid'][s1]*y_val*(1+f_err_tot), color='orange', alpha=0.4)
@@ -349,7 +349,7 @@ t_wp['wprp_JK_mean'] = all_wprp.mean(axis=0)
 t_wp['wprp_JK_std'] = all_wprp.std(axis=0)
 f_err2 = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 f_err = (f_err1**2+f_err2**2)**0.5
-f_err_tot = (f_err1**2+f_err2**2 + syst_err**2)**0.5
+f_err_tot = (f_err1**2+f_err2**2 + 2*syst_err**2)**0.5
 
 plt.fill_between(t_wp['rp_mid'], t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean']*(1-f_err_tot), t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean']*(1+f_err_tot), color='black', alpha=0.4)
 plt.plot(t_wp['rp_mid'], t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean'], lw=2,  ls='solid', color='black')#, label='all galaxies')
@@ -365,7 +365,7 @@ all_wprp = np.array(all_wprp)
 f_err2 = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
 # f_err2 = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 f_err = (f_err1**2+f_err2**2)**0.5
-f_err_tot = (f_err1**2+f_err2**2 + syst_err**2)**0.5
+f_err_tot = (f_err1**2+f_err2**2 + 2*syst_err**2)**0.5
 plt.fill_between(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp']*(1-f_err_tot), t_wp['wprp']/t_ref['wprp']*(1+f_err_tot), color='darkred', alpha=0.4)
 plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='solid', color='darkred', label='red-sequence')
 
@@ -380,7 +380,7 @@ all_wprp = np.array(all_wprp)
 f_ef_err2rr = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
 # f_err2 = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 f_err = (f_err1**2+f_err2**2)**0.5
-f_err_tot = (f_err1**2+f_err2**2 + syst_err**2)**0.5
+f_err_tot = (f_err1**2+f_err2**2 + 2*syst_err**2)**0.5
 plt.fill_between(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp']*(1-f_err_tot), t_wp['wprp']/t_ref['wprp']*(1+f_err_tot), color='darkblue', alpha=0.4)
 plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='solid', color='darkblue', label='blue-cloud')
 

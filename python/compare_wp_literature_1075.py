@@ -92,9 +92,9 @@ for el in pcf_list :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
-# t_wp = BGS["ANY_10.25"]
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='solid', label='All, N='+str(int(t_wp['N_data'][0])), color='black')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']* t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='black', alpha=0.3)
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']* t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='black', alpha=0.3)
 
 # t_wp = BGS["RS_10.25"]
 t_wp = Table.read( os.path.join( d1075_RS, 'LS10_VLIM_RS_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03.fits' ) )
@@ -104,8 +104,9 @@ for el in pcf_list :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='solid', label='red-sequence, N='+str(int(t_wp['N_data'][0])), color='darkred')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='darkred', alpha=0.3)
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkred', alpha=0.3)
 
 # t_wp = BGS["BC_10.25"]
 t_wp = Table.read( os.path.join( d1075_BC, 'LS10_VLIM_BC_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03.fits' ) )
@@ -115,8 +116,9 @@ for el in pcf_list :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='solid', label='blue-cloud, N='+str(int(t_wp['N_data'][0])), color='darkblue')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='darkblue', alpha=0.3)
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkblue', alpha=0.3)
 
 y_val = np.arange(7, 3000, 1)
 plt.fill_betweenx(y=y_val, x1=60*np.ones_like(y_val), x2=15*np.ones_like(y_val), color='k' , alpha=0.3)
@@ -154,9 +156,10 @@ all_wprp = np.array(all_wprp)
 t_wp = Table.read(el)
 s1 = (t_wp['rp_mid']>=1)
 f_err = all_wprp.std(axis=0)[s1]/all_wprp.mean(axis=0)[s1]
+f_err_tot = ( f_err**2 )**0.5
 y_val = all_wprp.mean(axis=0)[s1]
 plt.plot(t_wp['rp_mid'][s1], t_wp['rp_mid'][s1] * y_val , lw=1,  ls='dashed', label='C1', color='orange')
-plt.fill_between(t_wp['rp_mid'][s1], t_wp['rp_mid'][s1] * y_val*(1-f_err), t_wp['rp_mid'][s1]*y_val*(1+f_err), color='orange', alpha=0.4)
+plt.fill_between(t_wp['rp_mid'][s1], t_wp['rp_mid'][s1] * y_val*(1-f_err_tot), t_wp['rp_mid'][s1]*y_val*(1+f_err_tot), color='orange', alpha=0.4)
 
 
 t_wp = Table.read( os.path.join( d1075, 'LS10_VLIM_ANY_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03.fits' ) )
@@ -166,11 +169,12 @@ for el in pcf_list :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 t_ref = BGS["ANY_10.75"]
 f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
 print(f_err,f_err_resamp)
 plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', label='G1075', color='black')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']* t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='black', alpha=0.4)
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']* t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='black', alpha=0.4)
 
 
 # t_wp = BGS["RS_10.25"]
@@ -181,11 +185,12 @@ for el in pcf_list :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 t_ref = BGS["RS_10.75"]
 f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
 print(f_err,f_err_resamp)
 plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', color='darkred')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='darkred', alpha=0.4)
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkred', alpha=0.4)
 
 # t_wp = BGS["BC_10.25"]
 t_wp = Table.read( os.path.join( d1075_BC, 'LS10_VLIM_BC_10.75_Mstar_12.0_0.05_z_0.31_N_2802710-wprp-pimax100-bin0p05-HpxMask-01z03.fits' ) )
@@ -195,11 +200,12 @@ for el in pcf_list :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 t_ref = BGS["BC_10.75"]
 f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
 print(f_err,f_err_resamp)
 plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', color='darkblue')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='darkblue', alpha=0.4)
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkblue', alpha=0.4)
 
 pcf_list = np.array( glob.glob( os.path.join( d1075_BC, '*NSIDE_08*.fits' )))
 all_wprp = []
@@ -207,11 +213,12 @@ for el in pcf_list :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 t_ref = BGS["BC_10.75"]
 f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
 print(f_err,f_err_resamp)
 plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', color='darkblue')
-plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err), t_wp['rp_mid']*t_wp['wprp']*(1+f_err), color='darkblue', alpha=0.4)
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkblue', alpha=0.4)
 
 
 # t_ref = CxG["S1_ANY_10.75"]
@@ -222,9 +229,10 @@ for el in pcf_list_1075 :
 all_wprp = np.array(all_wprp)
 t_wp = Table.read(el)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 # f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.plot(t_wp['rp_mid'],all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', label='C1 x G1075', color='black')
-plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err), color='black', alpha=0.4)
+plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err_tot), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err_tot), color='black', alpha=0.4)
 
 # t_wp = CxG["S1_BC_10.75"]
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_BC_*NSIDE_08*.fits' )))
@@ -234,9 +242,10 @@ for el in pcf_list_1075 :
 all_wprp = np.array(all_wprp)
 t_wp = Table.read(el)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 # f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkblue')
-plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err), color='darkblue', alpha=0.4)#, label='blue-cloud')
+plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err_tot), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err_tot), color='darkblue', alpha=0.4)#, label='blue-cloud')
 
 t_wp = CxG["S1_RS_10.75"]
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_RS_*NSIDE_08*.fits' )))
@@ -246,9 +255,10 @@ for el in pcf_list_1075 :
 all_wprp = np.array(all_wprp)
 t_wp = Table.read(el)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
 # f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkred')
-plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err), color='darkred', alpha=0.4)#, label='red-sequence')
+plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err_tot), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err_tot), color='darkred', alpha=0.4)#, label='red-sequence')
 
 plt.plot(z13_r, z13_r*z13_wp, label='Zu 13 (M$^*\sim11.7$))', ls='dotted', lw=1, color='green', zorder=0)
 plt.fill_between(z13_r, z13_r*z13_wp*(1-z13_wp_ferr), z13_r*z13_wp*(1+z13_wp_ferr), color='green', alpha=0.4)
@@ -343,8 +353,8 @@ t_wp['wprp_JK_mean'] = all_wprp.mean(axis=0)
 t_wp['wprp_JK_std'] = all_wprp.std(axis=0)
 f_err2 = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 f_err = (f_err1**2+f_err2**2)**0.5
-
-plt.fill_between(t_wp['rp_mid'], t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean']*(1-f_err), t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean']*(1+f_err), color='black', alpha=0.4)
+f_err_tot = (f_err1**2+f_err2**2 + 2*syst_err**2)**0.5
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean']*(1-f_err_tot), t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean']*(1+f_err_tot), color='black', alpha=0.4)
 plt.plot(t_wp['rp_mid'], t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean'], lw=2,  ls='solid', color='black')#, label='all galaxies')
 
 t_ref = BGS["RS_10.75"]
@@ -358,7 +368,8 @@ all_wprp = np.array(all_wprp)
 f_err2 = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
 # f_err2 = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 f_err = (f_err1**2+f_err2**2)**0.5
-plt.fill_between(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp']*(1-f_err), t_wp['wprp']/t_ref['wprp']*(1+f_err), color='darkred', alpha=0.4)
+f_err_tot = (f_err1**2+f_err2**2 + 2*syst_err**2)**0.5
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp']*(1-f_err_tot), t_wp['wprp']/t_ref['wprp']*(1+f_err_tot), color='darkred', alpha=0.4)
 plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='solid', color='darkred', label='red-sequence')
 
 t_ref = BGS["BC_10.75"]
@@ -372,7 +383,8 @@ all_wprp = np.array(all_wprp)
 f_ef_err2rr = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
 # f_err2 = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 f_err = (f_err1**2+f_err2**2)**0.5
-plt.fill_between(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp']*(1-f_err), t_wp['wprp']/t_ref['wprp']*(1+f_err), color='darkblue', alpha=0.4)
+f_err_tot = (f_err1**2+f_err2**2 + 2*syst_err**2)**0.5
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp']*(1-f_err_tot), t_wp['wprp']/t_ref['wprp']*(1+f_err_tot), color='darkblue', alpha=0.4)
 plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='solid', color='darkblue', label='blue-cloud')
 
 b_gal = 1.43#*b_corr_1075
