@@ -120,6 +120,8 @@ def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='',
     #p.errorbar(x_mid, y_mid, yerr = y_std * y_mid, xerr=[x_hig-x_mid, x_mid-x_low], lw=2, fmt='', ls='')
     p.errorbar(x_mid[ok], y_mid[ok], yerr = abs(y_std[ok]*y_mid[ok]), xerr=[x_hig[ok]-x_mid[ok], x_mid[ok]-x_low[ok]],
                lw=3, marker='*', fmt='', ls='', label='Randoms')
+    RR_interp = interp1d( np.copy(x_mid), np.copy(y_mid) )
+    RR_std_interp = interp1d( np.copy(x_mid), np.copy(y_std)/np.copy(y_mid) )
 
     mean_density =  np.mean(df_sum['w_i']/area_pix)
     #
@@ -157,7 +159,8 @@ def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='',
     #p.errorbar(x_mid, y_mid, yerr = y_std * y_mid, xerr=[x_hig-x_mid, x_mid-x_low], lw=2, fmt='', ls='')
     p.errorbar(x_mid[ok], y_mid[ok], yerr = abs(y_std[ok]*y_mid[ok]), xerr=[x_hig[ok]-x_mid[ok], x_mid[ok]-x_low[ok]],
                lw=3, marker='*', fmt='', ls='', label='Galaxies')
-
+    DD_interp = interp1d(np.copy(x_mid), np.copy(y_mid))
+    DD_std_interp = interp1d(np.copy(x_mid), np.copy(y_std)/np.copy(y_mid))
     out_H = np.histogram(df_mean[sys_key], bins=boundaries)#, density = True)
     y_hist = out_H[0]/np.sum(out_H[0])
     y_hist_cumul = np.cumsum(out_H[0])/np.sum(out_H[0])
@@ -169,6 +172,13 @@ def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='',
     # p.axvline(cms(0.05), ls='dotted', color='m', label='5-95%' )
     p.axvline(cms(0.9), ls='dashed', color='r' )
     print(cms(0.1),cms(0.9))
+
+    x_min = np.max([DD_interp.x.min(),RR_interp.x.min()])
+    x_max = np.min([DD_interp.x.max(),RR_interp.x.max()])
+    x_array_diff = np.arange(x_min, x_max, (x_max-x_min)/100 )
+    y_diff = DD_interp(x_array_diff)-RR_interp(x_array_diff)
+    y_diff_err = y_diff*(DD_std_interp(x_array_diff)**2-RR_std_interp(x_array_diff)**2)**0.5
+    p.errorbar(x_array_diff, y_diff, yerr=y_diff_err, fmt='o', lw=3, color='k', label=r'$\Delta$ data-random')
     p.xlabel(sys_key)
     p.ylabel(r"$N/\bar{N}-1$ ")
     #if sys_key=='EBV':
