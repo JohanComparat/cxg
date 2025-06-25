@@ -188,7 +188,7 @@ def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='',
     p.ylim((y0, y1))
     p.xlim((V0, V1))
     p.grid()
-    p.legend()
+    p.legend(ncol=2, fontsize=12)
     p.title(title+', NSIDE=' + str(NSIDE))
     #p.xscale('log')
     p.tight_layout()
