@@ -85,6 +85,7 @@ RRR = RRR[sR]
 syst_dir  =   os.path.join(topdir, basename+'_syst')
 os.system('mkdir -p '+syst_dir)
 
+NSIDE = NSIDE_val
 gaia_dir  =  '/data42s/comparat/firefly/gaia_cat'
 t_gaia = Table.read( os.path.join( gaia_dir, 'GAIA_stellar_density_NSIDE_'+str(NSIDE).zfill(5) +'.fits' ) )
 t_gaia['stellar_density'][t_gaia['stellar_density'] == 0] = 1
