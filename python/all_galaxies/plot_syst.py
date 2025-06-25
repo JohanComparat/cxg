@@ -67,14 +67,61 @@ p2_sum  = base_out + '.sum.csv'
 df_mean = pd.read_csv(p2_mean)
 df_sum = pd.read_csv(p2_sum)
 
-def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='', title='',dlognh = 0.1, y0=-0.25, y1=0.25, df_mean=df_mean, df_sum=df_sum ):
+print(base_out_R)
+p2_mean = base_out_R + '.mean.csv'
+p2_sum  = base_out_R + '.sum.csv'
+df_mean_R = pd.read_csv(p2_mean)
+df_sum_R = pd.read_csv(p2_sum)
+
+def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='',
+               title='',dlognh = 0.1, y0=-0.25, y1=0.25,
+               df_mean=df_mean, df_sum=df_sum,
+               df_mean_R=df_mean_R, df_sum_R=df_sum_R):
     #
     # FIGURE EBV
     #
     print(sys_key)
     fig_name = os.path.join( fig_dir, basename + '_NSIDE_'+str(NSIDE)+'_syst_' + sys_key + name +'.png')
-    mean_density =  np.mean(df_sum['w_i']/area_pix)
+
+    mean_density =  np.mean(df_sum_R['w_i']/area_pix)
     p.figure(0, (7,5) )
+    #
+    # running mean in bins by hand
+    # need to write the proper pandas command so it is faster
+    #
+    #boundaries = 10**np.arange( np.log10(df_mean_R[sys_key].min()), np.log10(df_mean_R[sys_key].max())+dlognh, dlognh )
+    V0 = np.min(df_mean_R[sys_key][np.isinf(df_mean_R[sys_key])==False])
+    V1 = np.max(df_mean_R[sys_key][np.isinf(df_mean_R[sys_key])==False])
+    boundaries = np.arange( V0, V1 + dlognh, dlognh )
+    x_low, x_mid, x_med, x_hig = [], [], [], []
+    y_mid, y_std = [], []
+    for ii in np.arange(len(boundaries)-1):
+        s_nh = (df_mean_R[sys_key] >= boundaries[ii]) & ( df_mean_R[sys_key] < boundaries[ii+1])
+        x_low .append( boundaries[ii]   )
+        x_hig .append( boundaries[ii+1] )
+        x_mid .append( 0.5 * ( boundaries[ii+1] + boundaries[ii] ) )
+        x_med .append( np.mean(df_mean_R[sys_key][s_nh]) )
+        y_mid .append( np.sum(df_sum_R['w_i'][s_nh])/len(df_sum_R['w_i'][s_nh]) /area_pix / mean_density -1 )
+        std_frac = np.std(df_sum_R['w_i'][s_nh])/np.sum(df_sum_R['w_i'][s_nh])
+        y_std .append( ( 1/np.sum(df_sum_R['w_i'][s_nh]) + std_frac**2 ) **0.5 )
+
+    x_low = np.array( x_low )
+    x_hig = np.array( x_hig )
+    x_mid = np.array( x_mid )
+    x_med = np.array( x_med )
+    y_mid = np.array( y_mid )
+    y_std = np.array( y_std )
+    #print("y_mid", y_mid)
+    #print("y_std", y_std)
+    y_up = abs( ( 1 + y_std ) * y_mid )
+    y_lo = abs( ( 1 - y_std ) * y_mid )
+    ok = (y_mid>-1000)
+    #print(y_up[ok] - y_mid[ok], y_mid[ok] - y_lo[ok])
+    #p.errorbar(x_mid, y_mid, yerr = y_std * y_mid, xerr=[x_hig-x_mid, x_mid-x_low], lw=2, fmt='', ls='')
+    p.errorbar(x_mid[ok], y_mid[ok], yerr = abs(y_std[ok]*y_mid[ok]), xerr=[x_hig[ok]-x_mid[ok], x_mid[ok]-x_low[ok]],
+               lw=3, marker='*', fmt='', ls='', label='Randoms')
+
+    mean_density =  np.mean(df_sum['w_i']/area_pix)
     #
     # running mean in bins by hand
     # need to write the proper pandas command so it is faster
@@ -108,7 +155,9 @@ def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='', title='',d
     ok = (y_mid>-1000)
     #print(y_up[ok] - y_mid[ok], y_mid[ok] - y_lo[ok])
     #p.errorbar(x_mid, y_mid, yerr = y_std * y_mid, xerr=[x_hig-x_mid, x_mid-x_low], lw=2, fmt='', ls='')
-    p.errorbar(x_mid[ok], y_mid[ok], yerr = abs(y_std[ok]*y_mid[ok]), xerr=[x_hig[ok]-x_mid[ok], x_mid[ok]-x_low[ok]], lw=3, marker='*', fmt='', ls='', label='LS DR10')
+    p.errorbar(x_mid[ok], y_mid[ok], yerr = abs(y_std[ok]*y_mid[ok]), xerr=[x_hig[ok]-x_mid[ok], x_mid[ok]-x_low[ok]],
+               lw=3, marker='*', fmt='', ls='', label='Galaxies')
+
     out_H = np.histogram(df_mean[sys_key], bins=boundaries)#, density = True)
     y_hist = out_H[0]/np.sum(out_H[0])
     y_hist_cumul = np.cumsum(out_H[0])/np.sum(out_H[0])
@@ -146,13 +195,9 @@ deltaSD = 0.05
 
 z_str = '0.1<z<0.2'
 
-plot_syst( 'log10_stellar_density', title=z_str,  dlognh = deltaSD, df_mean=df_mean, df_sum=df_sum)#, y0=-1, y1=1 )
-
-print(base_out_R)
-p2_mean = base_out_R + '.mean.csv'
-p2_sum  = base_out_R + '.sum.csv'
-df_mean_R = pd.read_csv(p2_mean)
-df_sum_R = pd.read_csv(p2_sum)
-
-plot_syst( 'log10_stellar_density', title=z_str, name='RAND',  dlognh = deltaSD, df_mean=df_mean_R, df_sum=df_sum_R)#, y0=-1, y1=1 )
+plot_syst( 'log10_stellar_density',
+           title=z_str,
+           dlognh = deltaSD,
+            df_mean=df_mean, df_sum=df_sum,
+            df_mean_R=df_mean_R, df_sum_R=df_sum_R)#, y0=-1, y1=1 )
 
