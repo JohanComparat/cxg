@@ -56,16 +56,16 @@ area_pix = healpy.nside2pixarea(NSIDE, degrees = True)
 fig_dir  =  os.path.join( '../figures', basename+'_syst', 'NSIDE_'+str(NSIDE).zfill(4) )
 os.system('mkdir -p '+ fig_dir)
 
+deltaMag = 0.05
+deltaEBV = 0.002
+deltaPSF = 0.05
+deltaSD = 0.05
+
 print(base_out)
 p2_mean = base_out + '.mean.csv'
 p2_sum  = base_out + '.sum.csv'
 df_mean = pd.read_csv(p2_mean)
 df_sum = pd.read_csv(p2_sum)
-print(base_out_R)
-p2_mean = base_out_R + '.mean.csv'
-p2_sum  = base_out_R + '.sum.csv'
-df_mean_R = pd.read_csv(base_out_R)
-df_sum_R = pd.read_csv(base_out_R)
 
 def plot_syst( sys_key='EBV', NSIDE=NSIDE, name='', title='',dlognh = 0.1, y0=-0.25, y1=0.25, df_mean=df_mean, df_sum=df_sum ):
     #
@@ -135,13 +135,21 @@ def plot_syst( sys_key='EBV', NSIDE=NSIDE, name='', title='',dlognh = 0.1, y0=-0
     p.savefig( fig_name )
     p.clf()
 
+# stellar density
+
+
 deltaMag = 0.05
 deltaEBV = 0.002
 deltaPSF = 0.05
 deltaSD = 0.05
 
-# stellar density
-
 plot_syst( 'log10_stellar_density', title=z_str,  dlognh = deltaSD, df_mean=df_mean, df_sum=df_sum)#, y0=-1, y1=1 )
+
+print(base_out_R)
+p2_mean = base_out_R + '.mean.csv'
+p2_sum  = base_out_R + '.sum.csv'
+df_mean_R = pd.read_csv(p2_mean)
+df_sum_R = pd.read_csv(p2_sum)
+
 plot_syst( 'log10_stellar_density', title=z_str, name='RAND',  dlognh = deltaSD, df_mean=df_mean_R, df_sum=df_sum_R)#, y0=-1, y1=1 )
 
