@@ -168,8 +168,8 @@ def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='',
     cms = interp1d(y_hist_cumul, x_hist)
     p.step(x_hist, 0.15 * y_hist/y_hist.max(), where='mid', label='PDF' )
     p.axvline(cms(0.1), ls='dashed', color='r', label='10-90%' )
-    # p.axvline(cms(0.99), ls='dashed', color='r' )
-    # p.axvline(cms(0.05), ls='dotted', color='m', label='5-95%' )
+    p.axvline(cms(0.95), ls='dashed', color='m' )
+    p.axvline(cms(0.05), ls='dotted', color='m', label='5-95%' )
     p.axvline(cms(0.9), ls='dashed', color='r' )
     print(cms(0.1),cms(0.9))
 
