@@ -74,7 +74,7 @@ df_mean_R = pd.read_csv(p2_mean)
 df_sum_R = pd.read_csv(p2_sum)
 
 def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='',
-               title='',dlognh = 0.1, y0=-0.25, y1=0.25,
+               title='',dlognh = 0.1, y0=-0.2, y1=0.2,
                df_mean=df_mean, df_sum=df_sum,
                df_mean_R=df_mean_R, df_sum_R=df_sum_R):
     #
@@ -179,6 +179,7 @@ def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='',
     y_diff = DD_interp(x_array_diff)-RR_interp(x_array_diff)
     y_diff_err = y_diff*(DD_std_interp(x_array_diff)**2-RR_std_interp(x_array_diff)**2)**0.5
     p.errorbar(x_array_diff, y_diff, yerr=y_diff_err, fmt='o', lw=3, color='k', label=r'$\Delta$ data-random')
+    p.fill_between(x_array_diff, -0.02*np.ones_like(x_array_diff), 0.02*np.ones_like(x_array_diff), color='r', alpha=0.2, label=r'$\pm2\%$')
     p.xlabel(sys_key)
     p.ylabel(r"$N/\bar{N}-1$ ")
     #if sys_key=='EBV':
