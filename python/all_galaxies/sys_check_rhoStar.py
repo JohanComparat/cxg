@@ -45,8 +45,6 @@ basename = sys.argv[5].split('-')[0][9:]
 z_min = float(sys.argv[6])
 z_max = float(sys.argv[7])
 
-
-
 data1 = Table.read(os.path.join(topdir, p2_data ), format='fits')
 rand = Table.read(os.path.join(topdir, p2_random ), format='fits')
 
