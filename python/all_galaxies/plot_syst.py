@@ -67,7 +67,7 @@ p2_sum  = base_out + '.sum.csv'
 df_mean = pd.read_csv(p2_mean)
 df_sum = pd.read_csv(p2_sum)
 
-def plot_syst( sys_key='EBV', NSIDE=NSIDE, name='', title='',dlognh = 0.1, y0=-0.25, y1=0.25, df_mean=df_mean, df_sum=df_sum ):
+def plot_syst( sys_key='log10_stellar_density', NSIDE=NSIDE, name='', title='',dlognh = 0.1, y0=-0.25, y1=0.25, df_mean=df_mean, df_sum=df_sum ):
     #
     # FIGURE EBV
     #
@@ -115,11 +115,11 @@ def plot_syst( sys_key='EBV', NSIDE=NSIDE, name='', title='',dlognh = 0.1, y0=-0
     x_hist = ( out_H[1][1:] + out_H[1][:-1] ) /2.
     cms = interp1d(y_hist_cumul, x_hist)
     p.step(x_hist, 0.15 * y_hist/y_hist.max(), where='mid', label='PDF' )
-    p.axvline(cms(0.01), ls='dashed', color='r', label='1-99%' )
-    p.axvline(cms(0.99), ls='dashed', color='r' )
-    p.axvline(cms(0.05), ls='dotted', color='m', label='5-95%' )
-    p.axvline(cms(0.95), ls='dotted', color='m' )
-    print(cms(0.01),cms(0.05),cms(0.95),cms(0.99))
+    p.axvline(cms(0.1), ls='dashed', color='r', label='10-90%' )
+    # p.axvline(cms(0.99), ls='dashed', color='r' )
+    # p.axvline(cms(0.05), ls='dotted', color='m', label='5-95%' )
+    p.axvline(cms(0.9), ls='dashed', color='r' )
+    print(cms(0.1),cms(0.9))
     p.xlabel(sys_key)
     p.ylabel(r"$N/\bar{N}-1$ ")
     #if sys_key=='EBV':
@@ -134,6 +134,7 @@ def plot_syst( sys_key='EBV', NSIDE=NSIDE, name='', title='',dlognh = 0.1, y0=-0
     p.tight_layout()
     p.savefig( fig_name )
     p.clf()
+    print(fig_name)
 
 # stellar density
 
