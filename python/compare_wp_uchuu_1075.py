@@ -86,7 +86,7 @@ t_wp = Table.read(el)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
 f_err_tot = (f_err**2 + syst_err**2)**0.5
 # f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkblue')
+plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkblue', label='blue-cloud')
 plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err_tot), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err_tot), color='darkblue', alpha=0.4)#, label='blue-cloud')
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_RS_*NSIDE_08*.fits' )))
@@ -98,7 +98,7 @@ t_wp = Table.read(el)
 f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
 f_err_tot = (f_err**2 + syst_err**2)**0.5
 # f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkred')
+plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkred', label='red-sequence')
 plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err_tot), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err_tot), color='darkred', alpha=0.4)#, label='red-sequence')
 
 t_wp = U0p19["ANY_10.75_LX43.2"]
@@ -114,12 +114,8 @@ plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp_JK_mean'], lw=2,  ls='dashed'
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
 plt.fill_between(t_wp['rp_mid'], t_wp['wprp_JK_mean']*t_wp['rp_mid']*(1-f_err), t_wp['wprp_JK_mean']*t_wp['rp_mid']*(1+f_err), color='orange', alpha=0.3)
 
-#t_wp = U0p19["ANY_10.75_LX42.9"]
-#plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=2,  ls='dashed', color='k', label='Uchuu+UM z=0.14')
-#t_wp = U0p19["BC_10.75_LX42.9"]
-#plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=2,  ls='dashed', color='cyan')
-#t_wp = U0p19["RS_10.75_LX42.9"]
-#plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=2,  ls='dashed', color='pink')
+y_val = np.arange(7, 3000, 1)
+plt.fill_betweenx(y=y_val, x1=60*np.ones_like(y_val), x2=15*np.ones_like(y_val), color='k' , alpha=0.3)
 
 plt.ylim((1, 1500))
 plt.xlim((0.05, 60))
