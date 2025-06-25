@@ -143,6 +143,8 @@ deltaEBV = 0.002
 deltaPSF = 0.05
 deltaSD = 0.05
 
+z_str = '0.1<z<0.2'
+
 plot_syst( 'log10_stellar_density', title=z_str,  dlognh = deltaSD, df_mean=df_mean, df_sum=df_sum)#, y0=-1, y1=1 )
 
 print(base_out_R)
