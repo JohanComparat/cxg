@@ -1,0 +1,406 @@
+print('+'*100)
+import matplotlib
+matplotlib.use('Agg')
+matplotlib.rcParams.update({'font.size': 14})
+import matplotlib.pyplot as plt
+import os, sys
+import glob
+import numpy as np
+from astropy.table import Table, Column, vstack, hstack
+from scipy.optimize import curve_fit
+#import healpy
+from scipy.interpolate import interp1d
+colors = ["#67E568","#FFF000","#FFB62B","#E56124",
+		  "#E53E30",
+		  "#7F2353","#F911FF","#9F8CA6","#257F27","#08420D"]
+
+fig_dir  ='../figures/'
+# "C:\Users\Johan Comparat\Documents\Shared\software\st_mod_data\data"
+# export GIT_STMOD_DATA='/home/idies/workspace/erosim/software/st_mod_data'
+os.environ['GIT_STMOD_DATA'] = os.path.join(os.environ['USERPROFILE'], "Documents\Shared\software\st_mod_data") # visible in this process + all children
+ZuMa_dir = os.path.join(os.environ['GIT_STMOD_DATA'], 'data/benchmark/zu-mandelbaum-1505.02781v1')
+
+os.environ['LSDR10'] = os.path.join(os.environ['USERPROFILE'], "Documents\Shared\data\legacysurvey\dr10")
+LS10_bgs_vlim_dir = os.path.join(os.environ['LSDR10'], 'sweep\BGS_VLIM_Mstar')
+
+d1025 = '../data/_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_JK_wprp100'
+d1025_BC = '../DATA/_BC_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_JK_wprp100'
+d1025_RS = '../DATA/_RS_10.25_Mstar_12.0_0.05_z_0.22_N_3308841_JK_wprp100'
+dC0xG1025 = '../data/C0xG1025'
+dC0xC0 = '../data/C0xC0'
+
+ZuMa = {}
+ZuMa["esd_10.2_M_10.6"]  = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_esd_10.2_M_10.6_measurements.txt" ), unpack = True)
+ZuMa["esd_10.6_M_11.0"]  = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_esd_10.6_M_11.0_measurements.txt" ), unpack = True)
+ZuMa["esd_11.0_M_11.2"]  = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_esd_11.0_M_11.2_measurements.txt" ), unpack = True)
+ZuMa["esd_11.2_M_11.4"]  = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_esd_11.2_M_11.4_measurements.txt" ), unpack = True)
+ZuMa["esd_11.4_M_12.0"]  = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_esd_11.4_M_12.0_measurements.txt" ), unpack = True)
+ZuMa["esd_9.4_M_9.8"]    = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_esd_9.4_M_9.8_measurements.txt"   ), unpack = True)
+ZuMa["esd_9.8_M_10.2"]   = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_esd_9.8_M_10.2_measurements.txt"  ), unpack = True)
+
+ZuMa["wprp_10.2_M_10.6"] = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_10.2_M_10.6_measurements.txt"), unpack = True)
+ZuMa["wprp_10.6_M_11.0"] = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_10.6_M_11.0_measurements.txt"), unpack = True)
+ZuMa["wprp_11.0_M_11.2"] = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_11.0_M_11.2_measurements.txt"), unpack = True)
+ZuMa["wprp_11.2_M_11.4"] = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_11.2_M_11.4_measurements.txt"), unpack = True)
+ZuMa["wprp_11.4_M_12.0"] = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_11.4_M_12.0_measurements.txt"), unpack = True)
+ZuMa["wprp_9.4_M_9.8"]   = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_9.4_M_9.8_measurements.txt"  ), unpack = True)
+ZuMa["wprp_9.8_M_10.2"]  = np.loadtxt( os.path.join(ZuMa_dir, "Fig6_wprp_9.8_M_10.2_measurements.txt" ), unpack = True)
+
+BGS = {}
+BGS["ANY_10.25"] = Table.read( os.path.join(LS10_bgs_vlim_dir, "LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask.fits") )
+BGS["RS_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "RS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+BGS["BC_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "BC_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-MstarMin_10.25-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+
+CLU={}
+CLU["S0_0.05_z_0.22"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.22-wprp-pimax100-bin0p1.fits"  ) )
+CLU["S0_0.05_z_0.35"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "AUTOCORR_eRASS1_VLIM_CLUSTERS_S0_0.05_z_0.35-wprp-pimax100-bin0p1.fits"  ) )
+
+CxG={}
+CxG["S0_ANY_10.25"]  = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p1-HpxMask_JK.fits"  ) )
+CxG["S0_BC_10.25"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_BC_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+CxG["S0_RS_10.25"]   = Table.read( os.path.join(LS10_bgs_vlim_dir, "eRASS1_VLIM_CLUSTERS_S0_CROSS_LS10_VLIM_RS_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p1-HpxMask_JK.fits" ) )
+
+syst_err = 0.02
+
+#
+#
+# Galaxies alone
+#
+#
+
+# plot wprp 1025
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M1025-ANY-BC-RS.png')
+plt.figure(11, (6,5))
+
+t_ref = BGS["ANY_10.25"]
+itp_ref = interp1d(t_ref['rp_mid'], t_ref['wprp'])
+t_wp = Table.read( os.path.join( d1025, 'LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02.fits' ) )
+s_5_20 = (t_wp['rp_mid']>=5)&(t_wp['rp_mid']<=20)
+# print('1025 b corr',t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20]), np.mean(t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20])))
+b_corr_1025 = np.mean(t_wp['wprp'][s_5_20]/itp_ref(t_wp['rp_mid'][s_5_20])) **0.5
+print('1025 b corr',b_corr_1025)
+pcf_list = np.array( glob.glob( os.path.join( d1025, '*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+# t_wp = BGS["ANY_10.25"]
+plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='solid', label='All, N='+str(int(t_wp['N_data'][0])), color='black')
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']* t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='black', alpha=0.3)
+
+# t_wp = BGS["RS_10.25"]
+t_wp = Table.read( os.path.join( d1025_RS, 'LS10_VLIM_RS_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02.fits' ) )
+pcf_list = np.array( glob.glob( os.path.join( d1025_RS, '*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='solid', label='red-sequence, N='+str(int(t_wp['N_data'][0])), color='darkred')
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkred', alpha=0.3)
+
+# t_wp = BGS["BC_10.25"]
+t_wp = Table.read( os.path.join( d1025_BC, 'LS10_VLIM_BC_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02.fits' ) )
+pcf_list = np.array( glob.glob( os.path.join( d1025_BC, '*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='solid', label='blue-cloud, N='+str(int(t_wp['N_data'][0])), color='darkblue')
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkblue', alpha=0.3)
+
+y_val = np.arange(7, 3000, 1)
+plt.fill_betweenx(y=y_val, x1=60*np.ones_like(y_val), x2=15*np.ones_like(y_val), color='k' , alpha=0.3)
+plt.ylim((8, 2000))
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$r_p\times w_p(r_p)$ [Mpc$^2$/h$^2$]")
+plt.legend(loc=3, fontsize=12, title='0.05<z<0.22,\n' +r'10.25$<\log_{10}(M*/M_\odot)<$12')
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
+
+
+
+#
+#
+# S1 10.25
+#
+#
+
+
+# plot wprp
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M1025-ANY-BC-RS-S0-clusters.png')
+plt.figure(3, (5., 5.))
+
+t_wp = CLU["S0_0.05_z_0.22"]
+# plt.plot(t_wp['rp_mid'], t_wp['wprp']*t_wp['rp_mid'], lw=2,  ls='solid', label=r'Clusters, $\log_{10}(L_X\; [\mathrm{erg/s}])>43.1$', color='orange')
+pcf_list = np.array( glob.glob( os.path.join( dC0xC0, '*NSIDE_16*.fits' )))
+all_wprp = []
+for el in pcf_list :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+t_wp = Table.read(el)
+s1 = (t_wp['rp_mid']>=1)
+f_err = all_wprp.std(axis=0)[s1]/all_wprp.mean(axis=0)[s1]
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+y_val = all_wprp.mean(axis=0)[s1]
+plt.plot(t_wp['rp_mid'][s1], t_wp['rp_mid'][s1] * y_val , lw=1,  ls='dashed', label='C0', color='orange')
+plt.fill_between(t_wp['rp_mid'][s1], t_wp['rp_mid'][s1] * y_val*(1-f_err_tot), t_wp['rp_mid'][s1]*y_val*(1+f_err_tot), color='orange', alpha=0.4)
+
+
+t_wp = Table.read( os.path.join( d1025, 'LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02.fits' ) )
+pcf_list = np.array( glob.glob( os.path.join( d1025, '*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+t_ref = BGS["ANY_10.25"]
+f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
+print(f_err,f_err_resamp)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', label='G1025', color='black')
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']* t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='black', alpha=0.4)
+
+
+# t_wp = BGS["RS_10.25"]
+t_wp = Table.read( os.path.join( d1025_RS, 'LS10_VLIM_RS_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02.fits' ) )
+pcf_list = np.array( glob.glob( os.path.join( d1025_RS, '*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+t_ref = BGS["RS_10.25"]
+f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
+print(f_err,f_err_resamp)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', color='darkred')
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkred', alpha=0.4)
+
+# t_wp = BGS["BC_10.25"]
+t_wp = Table.read( os.path.join( d1025_BC, 'LS10_VLIM_BC_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02.fits' ) )
+pcf_list = np.array( glob.glob( os.path.join( d1025_BC, '*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+t_ref = BGS["BC_10.25"]
+f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
+print(f_err,f_err_resamp)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', color='darkblue')
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkblue', alpha=0.4)
+
+pcf_list = np.array( glob.glob( os.path.join( d1025_BC, '*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+t_ref = BGS["BC_10.25"]
+f_err_resamp = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
+print(f_err,f_err_resamp)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+plt.plot(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp'], lw=1,  ls='dashed', color='darkblue')
+plt.fill_between(t_wp['rp_mid'], t_wp['rp_mid']*t_wp['wprp']*(1-f_err_tot), t_wp['rp_mid']*t_wp['wprp']*(1+f_err_tot), color='darkblue', alpha=0.4)
+
+
+# t_ref = CxG["S0_ANY_10.25"]
+pcf_list_1025 = np.array( glob.glob( os.path.join( dC0xG1025, '*_ANY_*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list_1025 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+t_wp = Table.read(el)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+plt.plot(t_wp['rp_mid'],all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', label='C0 x G1025', color='black')
+plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err_tot), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err_tot), color='black', alpha=0.4)
+
+# t_wp = CxG["S0_BC_10.25"]
+pcf_list_1025 = np.array( glob.glob( os.path.join( dC0xG1025, '*_BC_*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list_1025 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+t_wp = Table.read(el)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkblue')
+plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err_tot), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err_tot), color='darkblue', alpha=0.4)#, label='blue-cloud')
+
+t_wp = CxG["S0_RS_10.25"]
+pcf_list_1025 = np.array( glob.glob( os.path.join( dC0xG1025, '*_RS_*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list_1025 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+t_wp = Table.read(el)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+f_err_tot = (f_err**2 + syst_err**2)**0.5
+plt.plot(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid'], lw=1,  ls='solid', color='darkred')
+plt.fill_between(t_wp['rp_mid'], all_wprp.mean(axis=0)*t_wp['rp_mid']*(1-f_err_tot), all_wprp.mean(axis=0)*t_wp['rp_mid']*(1+f_err_tot), color='darkred', alpha=0.4)#, label='red-sequence')
+
+z13_r, z13_wp, z13_wp_up = np.loadtxt('../data/zu-weinberg-fig13-green-datapoints-M1120-M1140.csv', unpack=True, delimiter=',')
+z13_wp_ferr = z13_wp_up/z13_wp-1
+plt.plot(z13_r, z13_r*z13_wp, label=r'Zu 13 (M$^*\sim11.3$)', ls='dotted', color='green', zorder=0)
+plt.fill_between(z13_r, z13_r*z13_wp*(1-z13_wp_ferr), z13_r*z13_wp*(1+z13_wp_ferr), color='green', alpha=0.4)
+
+y_val = np.arange(7, 3000, 1)
+plt.fill_betweenx(y=y_val, x1=60*np.ones_like(y_val), x2=15*np.ones_like(y_val), color='k' , alpha=0.3)
+
+plt.ylim((9, 2e3))
+plt.xlim((0.03, 60))
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$r_p\times w_p(r_p)$")#")
+plt.legend(loc=4, fontsize=12,ncol=1)#, title=r'$0.1<z<0.3$, ' '$\log_{10}(L_X\; [\mathrm{erg/s}])>43.1$ x'+ "\n" +r'$10.25<\log_{10}(M*[M_\odot])<12$')#, title='LS10, r<19.5, 0.05<z<0.22')
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
+
+
+# plot wprp
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M1025-ANY-BC-RS-S0-clusters-err.png')
+plt.figure(13, (5., 5.))
+
+t_wp = CxG["S0_ANY_10.25"]
+pcf_list_1025 = np.array( glob.glob( os.path.join( dC0xG1025, '*_ANY_*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list_1025 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', color='black')
+
+t_wp = CxG["S0_BC_10.25"]
+pcf_list_1025 = np.array( glob.glob( os.path.join( dC0xG1025, '*_BC_*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list_1025 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', color='darkblue')
+
+t_wp = CxG["S0_RS_10.25"]
+pcf_list_1025 = np.array( glob.glob( os.path.join( dC0xG1025, '*_RS_*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list_1025 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', color='darkred')
+
+plt.plot(z13_r, z13_wp_ferr, lw=2, label='Zu 13', ls='dotted', color='green', zorder=0)
+
+plt.axhline(0.02, c='k', ls='dashed', label='syst')
+plt.axhline(-1, c='k', ls='solid', label='stat', lw=2)
+y_val = np.arange(0, 0.4, 0.01)
+plt.fill_betweenx(y=y_val, x1=60*np.ones_like(y_val), x2=15*np.ones_like(y_val), color='k' , alpha=0.3)
+
+plt.ylim((0.005, 0.3))
+plt.xlim((0.03, 60))
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$\sigma(w_p)/w_p$")#")
+plt.legend(loc=4, fontsize=12,ncol=1)
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)
+
+
+p2_fig = os.path.join( fig_dir, 'wprp-obs-M1025-ANY-BC-RS-S0-clusters-ratioCROSSAUTO.png')
+plt.figure(13, (5., 5.))
+
+
+# ANY G 1025 x ANY G 1025 REF
+t_ref = Table.read( os.path.join( d1025, 'LS10_VLIM_ANY_10.25_Mstar_12.0_0.05_z_0.22_N_3308841-wprp-pimax100-bin0p05-HpxMask-01z02.fits' ) )
+pcf_list = np.array( glob.glob( os.path.join( d1025, '*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+t_ref['wprp_JK_mean'] = all_wprp.mean(axis=0)
+t_ref['wprp_JK_std'] = all_wprp.std(axis=0)
+f_err1 = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+
+# ANY G 10.25 x C0
+t_wp = CxG["S0_ANY_10.25"]
+pcf_list_1025 = np.array( glob.glob( os.path.join( dC0xG1025, '*_ANY_*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list_1025 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+t_wp['wprp_JK_mean'] = all_wprp.mean(axis=0)
+t_wp['wprp_JK_std'] = all_wprp.std(axis=0)
+f_err2 = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+f_err = (f_err1**2+f_err2**2)**0.5
+f_err_tot = (f_err1**2+f_err2**2 + syst_err**2)**0.5
+
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean']*(1-f_err_tot), t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean']*(1+f_err_tot), color='black', alpha=0.4)
+plt.plot(t_wp['rp_mid'], t_wp['wprp_JK_mean']/t_ref['wprp_JK_mean'], lw=2,  ls='solid', color='black')#, label='all galaxies')
+
+t_ref = BGS["RS_10.25"]
+t_wp = CxG["S0_RS_10.25"]
+f_err1 = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
+pcf_list_1025 = np.array( glob.glob( os.path.join( dC0xG1025, '*_RS_*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list_1025 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_err2 = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+# f_err2 = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+f_err = (f_err1**2+f_err2**2)**0.5
+f_err_tot = (f_err1**2+f_err2**2 + syst_err**2)**0.5
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp']*(1-f_err_tot), t_wp['wprp']/t_ref['wprp']*(1+f_err_tot), color='darkred', alpha=0.4)
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='solid', color='darkred', label='red-sequence')
+
+t_ref = BGS["BC_10.25"]
+t_wp = CxG["S0_BC_10.25"]
+f_err1 = t_ref['wprp_JK_std']/t_ref['wprp_JK_mean']
+pcf_list_1025 = np.array( glob.glob( os.path.join( dC0xG1025, '*_BC_*NSIDE_08*.fits' )))
+all_wprp = []
+for el in pcf_list_1025 :
+	all_wprp.append(Table.read(el)['wprp'])
+all_wprp = np.array(all_wprp)
+f_ef_err2rr = all_wprp.std(axis=0)/all_wprp.mean(axis=0)
+# f_err2 = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
+f_err = (f_err1**2+f_err2**2)**0.5
+f_err_tot = (f_err1**2+f_err2**2 + syst_err**2)**0.5
+plt.fill_between(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp']*(1-f_err_tot), t_wp['wprp']/t_ref['wprp']*(1+f_err_tot), color='darkblue', alpha=0.4)
+plt.plot(t_wp['rp_mid'], t_wp['wprp']/t_ref['wprp'], lw=2,  ls='solid', color='darkblue', label='blue-cloud')
+
+b_gal = 1.43#*b_corr_1025
+b_clu = 3.35
+b_clu_e = 0.23 + 0.02
+xx = t_wp['rp_mid']
+plt.fill_between(xx, y1=np.ones_like(xx)*( ((b_clu-b_clu_e)/b_gal)), y2=np.ones_like(xx)*( ((b_clu+b_clu_e)/b_gal)), color='orange', alpha=0.2)
+plt.axhline((b_clu/b_gal), color='orange', ls='dashed', label='$b_{C}/b_{G}$')
+
+y_val = np.arange(0.1, 30, 0.1)
+plt.fill_betweenx(y=y_val, x1=60*np.ones_like(y_val), x2=15*np.ones_like(y_val), color='k' , alpha=0.3)
+plt.ylim((0.9, 20))
+plt.xlim((0.03, 60))
+plt.xscale('log')
+plt.yscale('log')
+plt.xlabel(r"$r_p$ [Mpc/h]")
+plt.ylabel(r"$w^{C0xG1025}_p/w^{G1025}_p$")
+plt.legend(loc=1, fontsize=12,ncol=1)#, title='C0xG1025')
+plt.tight_layout()
+plt.savefig(p2_fig)
+plt.clf()
+print(p2_fig)

@@ -57,19 +57,49 @@ nohup python compute_wprp_Files_MaskHpx_MstarDEP_z0102_TrueJK.py 100 \
 export OMP_NUM_THREADS=32
 cd ~/software/cxg/python/all_galaxies
 
+#nohup python compute_wprp_Files_CLU.py 100 \
+#"/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
+#"erass1cl_main_v2.0_w_xrayresu_w_expbkg_S0.fit" \
+#"randoms-1-0-erass1sky-hod-cutselfunc20230731_S0.fits" \
+#"eRASS1_VLIM_CLUSTERS_S0_wprp-pimax100-bin0p1-01z02" \
+# 0.1 0.2 4 "C0xC0" 0.1 > log_C0_jk_4.log &
+#
+#nohup python compute_wprp_Files_CLU.py 100 \
+#"/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
+#"erass1cl_main_v2.0_w_xrayresu_w_expbkg_S1.fit" \
+#"randoms-1-0-erass1sky-hod-cutselfunc20230731_S1.fits" \
+#"eRASS1_VLIM_CLUSTERS_S1_wprp-pimax100-bin0p1-01z02" \
+# 0.1 0.3 4 "C1xC1" 0.1 > log_C1_jk_4.log &
+#
+#
+#nohup python compute_wprp_Files_CLU.py 100 \
+#"/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
+#"erass1cl_main_v2.0_w_xrayresu_w_expbkg_S0.fit" \
+#"randoms-1-0-erass1sky-hod-cutselfunc20230731_S0.fits" \
+#"eRASS1_VLIM_CLUSTERS_S0_wprp-pimax100-bin0p2-01z02" \
+# 0.1 0.2 8 "C0xC0" 0.2 > log_C0_jk_8.log &
+#
+#nohup python compute_wprp_Files_CLU.py 100 \
+#"/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
+#"erass1cl_main_v2.0_w_xrayresu_w_expbkg_S1.fit" \
+#"randoms-1-0-erass1sky-hod-cutselfunc20230731_S1.fits" \
+#"eRASS1_VLIM_CLUSTERS_S1_wprp-pimax100-bin0p2-01z02" \
+# 0.1 0.3 8 "C1xC1" 0.2 > log_C1_jk_8.log &
+#
+
 nohup python compute_wprp_Files_CLU.py 100 \
 "/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
 "erass1cl_main_v2.0_w_xrayresu_w_expbkg_S0.fit" \
 "randoms-1-0-erass1sky-hod-cutselfunc20230731_S0.fits" \
-"eRASS1_VLIM_CLUSTERS_S0_wprp-pimax100-bin0p1-01z02" \
- 0.1 0.2 4 "C0xC0" 0.1 > log_C0_jk_4.log &
+"eRASS1_VLIM_CLUSTERS_S0_wprp-pimax100-bin0p25-01z02" \
+ 0.1 0.2 16 "C0xC0" 0.25 > log_C0_jk_16.log &
 
 nohup python compute_wprp_Files_CLU.py 100 \
 "/home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples" \
 "erass1cl_main_v2.0_w_xrayresu_w_expbkg_S1.fit" \
 "randoms-1-0-erass1sky-hod-cutselfunc20230731_S1.fits" \
-"eRASS1_VLIM_CLUSTERS_S1_wprp-pimax100-bin0p1-01z02" \
- 0.1 0.3 4 "C1xC1" 0.1 > log_C1_jk_4.log &
+"eRASS1_VLIM_CLUSTERS_S1_wprp-pimax100-bin0p25-01z02" \
+ 0.1 0.3 16 "C1xC1" 0.25 > log_C1_jk_16.log &
 
 
 
@@ -151,8 +181,9 @@ rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/_RS_10.25_Ms
 rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/_RS_10.75_Mstar_12.0_0.05_z_0.31_N_2802710_JK_wprp100 .
 rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/C0xG1025 .
 rsync -avz /data36s/comparat/legacysurvey/dr10/sweep/BGS_VLIM_Mstar/C1xG1075 .
+rsync -avz /home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples/C0xC0 .
+rsync -avz /home/comparat/data/eROSITA/cluster_clustering/eRASS1_CLU_VolLimSamples/C1xC1 .
 
-git add _ANY_10.*
 git add _*
 git add C*
 git commit -m"pcf"

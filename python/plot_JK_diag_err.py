@@ -158,7 +158,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='solid', label='C1 x G1075, N4='+str(len(pcf_list_1075)), color='black')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dashed', label='1000 JK NSIDE 4', color='black')
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_ANY_*NSIDE_08*.fits' )))
 all_wprp = []
@@ -166,7 +166,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', label='C1 x G1075, N8='+str(len(pcf_list_1075)), color='black')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', label='1000 JK NSIDE 8', color='black')
 
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_BC_*NSIDE_04*.fits' )))
@@ -175,7 +175,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='solid', label='C1 x G1075 BC, N4='+str(len(pcf_list_1075)), color='b')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dashed',  color='b')
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_BC_*NSIDE_08*.fits' )))
 all_wprp = []
@@ -183,7 +183,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', label='C1 x G1075 BC, N8='+str(len(pcf_list_1075)), color='b')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted',  color='b')
 
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_RS_*NSIDE_04*.fits' )))
@@ -192,7 +192,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='solid', label='C1 x G1075 RS, N4='+str(len(pcf_list_1075)), color='r')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dashed', color='r')
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC1xG1075, '*_RS_*NSIDE_08*.fits' )))
 all_wprp = []
@@ -200,28 +200,28 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', label='C1 x G1075 RS, N8='+str(len(pcf_list_1075)), color='r')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', color='r')
 
 
 t_wp = CxG["S1_ANY_10.75"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='dashed', color='black') # , label='C0 x G1025'
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', color='black' , label='100 re-samples')
 t_wp = CxG["S1_BC_10.75"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='blue-cloud', color='darkblue')
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='blue-cloud', color='blue')
 t_wp = CxG["S1_RS_10.75"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='red-sequence', color='darkred')
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='red-sequence', color='red')
 
-plt.plot(z13_r, z13_wp_ferr, lw=2, label='Zu 13 (M$^*\sim11.7$)', ls='dotted', color='green', zorder=0)
+plt.plot(z13_r, z13_wp_ferr, lw=2, label='Zu 13', ls='dotted', color='green', zorder=0)
 
 # plt.ylim((0.01, 0.3))
-plt.xlim((0.03, 60))
+plt.xlim((0.03, 80))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
 plt.ylabel(r"$\sigma(w_p)/w_p$")#")
-plt.legend(loc=0, fontsize=10,ncol=2)
+plt.legend(loc=0, fontsize=12,ncol=2, title='C1 x G1075')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()
@@ -239,7 +239,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='solid', label='C0 x G1025, N4='+str(len(pcf_list_1075)), color='black')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dashed', label='1000 JK NSIDE 4', color='black')
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC0xG1025, '*_ANY_*NSIDE_08*.fits' )))
 all_wprp = []
@@ -247,7 +247,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', label='C0 x G1025, N8='+str(len(pcf_list_1075)), color='black')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', label='1000 JK NSIDE 8', color='black')
 
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC0xG1025, '*_BC_*NSIDE_04*.fits' )))
@@ -256,7 +256,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='solid', label='C0 x G1025 BC, N4='+str(len(pcf_list_1075)), color='b')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dashed', color='b')
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC0xG1025, '*_BC_*NSIDE_08*.fits' )))
 all_wprp = []
@@ -264,7 +264,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', label='C0 x G1025 BC, N8='+str(len(pcf_list_1075)), color='b')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', color='b')
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC0xG1025, '*_RS_*NSIDE_04*.fits' )))
 all_wprp = []
@@ -272,7 +272,7 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='solid', label='C0 x G1025 RS, N4='+str(len(pcf_list_1075)), color='r')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dashed', color='r')
 
 pcf_list_1075 = np.array( glob.glob( os.path.join( dC0xG1025, '*_RS_*NSIDE_08*.fits' )))
 all_wprp = []
@@ -280,28 +280,28 @@ for el in pcf_list_1075 :
 	all_wprp.append(Table.read(el)['wprp'])
 all_wprp = np.array(all_wprp)
 t_ref = Table.read(el)
-plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', label='C0 x G1025 RS, N8='+str(len(pcf_list_1075)), color='r')
+plt.plot(t_ref['rp_mid'], all_wprp.std(axis=0)/all_wprp.mean(axis=0), lw=2,  ls='dotted', color='r')
 
 
 t_wp = CxG["S0_ANY_10.25"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='dashed', color='black') # , label='C0 x G1025'
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', color='black', label='100 re-samples')
 t_wp = CxG["S0_BC_10.25"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='blue-cloud', color='darkblue')
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='blue-cloud', color='blue')
 t_wp = CxG["S0_RS_10.25"]
 f_err = t_wp['wprp_JK_std']/t_wp['wprp_JK_mean']
-plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='red-sequence', color='darkred')
+plt.plot(t_wp['rp_mid'], f_err, lw=2,  ls='solid', label='red-sequence', color='red')
 
-plt.plot(z13_r, z13_wp_ferr, label='Zu 13 (SDSS)', ls='dotted', color='green', zorder=0)
+plt.plot(z13_r, z13_wp_ferr, label='Zu 13', ls='dotted', color='green', zorder=0)
 
 # plt.ylim((0.01, 0.3))
-plt.xlim((0.03, 60))
+plt.xlim((0.03, 80))
 plt.xscale('log')
 plt.yscale('log')
 plt.xlabel(r"$r_p$ [Mpc/h]")
 plt.ylabel(r"$\sigma(w_p)/w_p$")#")
-plt.legend(loc=0, fontsize=10,ncol=2)#, title=r'$0.1<z<0.2$, ' '$\log_{10}(L_X\; [\mathrm{erg/s}])>42.7$ x'+ "\n" +r'$10.25<\log_{10}(M*[M_\odot])<12$')#, title='LS10, r<19.5, 0.05<z<0.22')
+plt.legend(loc=0, fontsize=10,ncol=2, title='C0 x G1025')#, title=r'$0.1<z<0.2$, ' '$\log_{10}(L_X\; [\mathrm{erg/s}])>42.7$ x'+ "\n" +r'$10.25<\log_{10}(M*[M_\odot])<12$')#, title='LS10, r<19.5, 0.05<z<0.22')
 plt.tight_layout()
 plt.savefig(p2_fig)
 plt.clf()

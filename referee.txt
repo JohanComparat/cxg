@@ -18,17 +18,7 @@ The text font on the figures is too small, and the different linestyles are hard
 Some legends are repeated without reason across panels, while some panels leave a lot of white space, and the lines are squeezed against each other.
 
 Answer:
-Indeed, it is hard to see. We have updated the figures accordingly, removing less useful lines.
-
-3) On the right panel of Fig. 2, the curves do not seem to asymptote to the ratio of the biases on the largest scales plotted, even though the text says it does.
-Why is this? Why not plot out to larger r to check this?
-
-
-The clustering measurements for the clusters is limited to.
-NEED TO RECOMPUTE UNCERTAINTIES WITH A JACKKNIFE
-COMPUTE HEALPIX map, select 10% of pixels, remove in all samples, recompute clustering, repeat 1000 times
-Do it for various healpix scales.
-LOOK at number of pairs vs. scales in the XCORR, suggest a cut-off scale.
+Indeed, it is hard to see. We have updated the figures accordingly.
 
 4) I strongly recommend adding an appendix to demonstrate the robustness of the uncertainty estimation.
 As the authors demonstrate, there is possibly a large gain in SNR compared to Zu and Weinberg, so this is central to the entire analysis.
@@ -36,16 +26,25 @@ How did the authors convince themselves that the bootstrap outlined in Sec 3.1 i
 Have the authors checked against varying the fraction and the number of bootstrap draws?
 Why not use a jackknife?
 
-Thank you for pointing this out.
-We have recomputed uncertainties with a jackknife procedure:
-we remove a 10% fraction of the area in all catalogs using healpix to randomly discard a set of pixels covering a total of 10% of the area.
-The drawing method was failing to capture the uncertainties on the largest scales (>10 Mpc/h), while below <10Mpc/h, the uncertainty estimation is basically the same.
+Answer:
+Thank you for pointing this out. We have recomputed uncertainties with a jackknife procedure: we remove a 10% fraction of the area in all catalogs using healpix to randomly discard a set of pixels covering a total of 10% of the area.
+We use NSIDE 8, removing 15 pixels (each 53.7 deg2) at the time.
+We repeat that a 1000 times and estimated the relative uncertainty by dividing the standard deviation by the mean of the 1000 wp(rp) estimates.
+We found that the bootstrap method was failing to capture the uncertainties on the largest scales (>5 Mpc/h), while below <5Mpc/h, the uncertainty estimation of both methods are within the same per cent.
 
+Another difficulty with this photo-z defined galaxy sample is the control of systematics variations of the galaxy number density due to external variable.
+For these two samples, remains 1-2 per cent such variations, which would need spectroscopy for a proper treatment.
+Until more spectroscopic data is available in the south (e.g. in 5 years with 4MOST), we are left with adding a systematic uncertainty floor of 2\%.
 
-NEED TO RECOMPUTE UNCERTAINTIES WITH A JACKKNIFE. Errors are the same on Mpc scale and below, but then increase at large scales.
+We updated the draft accordingly.
 
-5) Similarly, it would be good to present, maybe again in an appendix,
-the claim that the Davis and Peebles estimator does a good job out to 500 kpc for the specific numbers in this paper.
+3) On the right panel of Fig. 2, the curves do not seem to asymptote to the ratio of the biases on the largest scales plotted, even though the text says it does.
+Why is this? Why not plot out to larger r to check this?
+
+Answer:
+To trust the measurements and go beyond 20Mpc/h, we need spectroscopic redshifts and a detailed treatment of systematics. We truncated all figures to 20Mpc/h.
+
+5) Similarly, it would be good to present, maybe again in an appendix, the claim that the Davis and Peebles estimator does a good job out to 500 kpc for the specific numbers in this paper.
 
 
 6) The results in 3.1 are interesting, and to strengthen their paper, the authors should discuss the implications in more detail
@@ -59,8 +58,7 @@ Relevant studies in a similar cluster mass range, but with different selections,
 https://ui.adsabs.harvard.edu/abs/2021ApJ...923...37A/abstract and
 https://ui.adsabs.harvard.edu/abs/2017ApJ...841...18B/abstract.
 
-Need to read and add to the paper.
-
+Apologies for missing these references, we added them to the introduction.
 
 =================
 
