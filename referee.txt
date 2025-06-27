@@ -57,7 +57,8 @@ We have re-phrased the explanation why we use it and linked to previous studies 
 than the last paragraph of the subsection.
 
 Answer:
-???
+We added a statement on possible future comparison with hydro-dynamical simulations and the insight we could gain on quenching.
+
 
 7) The authors mention in the Introduction that "Although the signal-to-noise ratio in the summary statistics previously measured was high,
 no study explored a possible trend as a function of galaxy properties, like colors or star formation rate."
@@ -68,16 +69,3 @@ https://ui.adsabs.harvard.edu/abs/2017ApJ...841...18B/abstract.
 
 Answer:
 Apologies for missing these references, we added them to the introduction and amended the text.
-
-=================
-
-Before resubmitting your manuscript, please take the time to verify the following common language and formatting issues.
-
-1) Please note the spelling convention (US or UK) of your paper and run a spell check specific to your preference (see the A&A language guide for authors, Sect. 2.1, for common spelling and punctuation differences between these two conventions).
-2) Check that abbreviations and acronyms are introduced correctly (see Sect. 5.2.4).
-3) Check your reference format (see Sect. 3.6.2).
-
-The A&A language guide for authors is available at https://www.aanda.org/for-authors/language-editing/1-introduction.
-
-For general information on publishing with A&A, please see the A&A author's guide, available at
-https://www.aanda.org/for-authors/author-information/paper-organization.
