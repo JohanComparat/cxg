@@ -1,17 +1,20 @@
-
+-----------------------------------------------
 Report by referee 1:
 
 This manuscript details the analysis of cross-correlations of X-ray-selected galaxy clusters from eROSITA and volume-limited galaxy samples from the DESI legacy survey. The authors focus on two key aspects of the cross-correlation study: first, the contrast in the cluster-galaxy cross-correlation when the galaxies are split into quiescent and star-forming subgroups, and second, an alternative method for measuring the red-sequence using the integrated cluster-galaxy cross-correlation out to 500 kpc.
 
 Overall, the manuscript represents an important contribution to the field in light of the latest cluster and galaxy catalogs, allowing for unprecedented SNR in the cross-correlation measurements. The central results are interesting and will advance the modeling of the galaxy-halo connection and galaxy formation and evolution physics. The model-independent red sequence measurement technique is noteworthy and could have broad applications for future datasets. However, the authors should address the following points before I recommend publication:
 
-1) While the manuscript is generally well-written, specific parts are poorly organized, making it very difficult to follow the analysis flow.
+-----------------------------------------------
+1)
+While the manuscript is generally well-written, specific parts are poorly organized, making it very difficult to follow the analysis flow.
 For example, the authors use different cuts in the cluster and galaxy samples in each analysis, and the descriptions are spread out in the text throughout Section 2.
 The different cluster and galaxy samples used in the paper should be summarized clearly in a table.
 
 Answer:
 Indeed, thank you for pointing this out. We added a table at the end in section 2 with the samples considered so the reader can grasp easily the information.
 
+-----------------------------------------------
 2) The figures, especially Figs 1 and 2, which represent the main analysis, need a lot of work.
 They should be updated to make them more legible and less cluttered.
 The text font on the figures is too small, and the different linestyles are hard to differentiate.
@@ -20,13 +23,15 @@ Some legends are repeated without reason across panels, while some panels leave 
 Answer:
 Indeed, it is hard to see. We have updated the figures accordingly.
 
-4) I strongly recommend adding an appendix to demonstrate the robustness of the uncertainty estimation.
+-----------------------------------------------
+4)
+I strongly recommend adding an appendix to demonstrate the robustness of the uncertainty estimation.
 As the authors demonstrate, there is possibly a large gain in SNR compared to Zu and Weinberg, so this is central to the entire analysis.
 How did the authors convince themselves that the bootstrap outlined in Sec 3.1 is good enough to estimate the covariance matrix and the required level of accuracy?
 Have the authors checked against varying the fraction and the number of bootstrap draws?
 Why not use a jackknife?
 
-Answer:
+Answer (we answer first nr.4 nd then nr.3):
 Thank you for pointing this out. We have recomputed uncertainties with a jackknife procedure:
 we remove a 10% fraction of the area in all catalogs using healpix to randomly discard a set of pixels covering a total of 10% of the area.
 We use NSIDE 8, removing 15 pixels at the time (each 53.7 deg2).
@@ -40,7 +45,9 @@ Until more spectroscopic data is available in the south (e.g. in 5 years with 4M
 
 We updated the draft accordingly.
 
-3) On the right panel of Fig. 2, the curves do not seem to asymptote to the ratio of the biases on the largest scales plotted, even though the text says it does.
+-----------------------------------------------
+3)
+On the right panel of Fig. 2, the curves do not seem to asymptote to the ratio of the biases on the largest scales plotted, even though the text says it does.
 Why is this? Why not plot out to larger r to check this?
 
 Answer:
@@ -48,19 +55,24 @@ To trust the measurements and go beyond 15Mpc/h, we need spectroscopic redshifts
 We added a grey area beyond 15 Mpc/h to identify that region.
 We extended the figures to 60Mpc/h to show clearly that the measurements are failing on larger scales.
 
-5) Similarly, it would be good to present, maybe again in an appendix, the claim that the Davis and Peebles estimator does a good job out to 500 kpc for the specific numbers in this paper.
+-----------------------------------------------
+5)
+Similarly, it would be good to present, maybe again in an appendix, the claim that the Davis and Peebles estimator does a good job out to 500 kpc for the specific numbers in this paper.
 
 Answer:
 We have re-phrased the explanation why we use it and linked to previous studies comparing estimators.
 
-6) The results in 3.1 are interesting, and to strengthen their paper, the authors should discuss the implications in more detail
+-----------------------------------------------
+6)
+The results in 3.1 are interesting, and to strengthen their paper, the authors should discuss the implications in more detail
 than the last paragraph of the subsection.
 
 Answer:
 We added a statement on possible future comparison with hydro-dynamical simulations and the insight we could gain on quenching.
 
-
-7) The authors mention in the Introduction that "Although the signal-to-noise ratio in the summary statistics previously measured was high,
+-----------------------------------------------
+7)
+The authors mention in the Introduction that "Although the signal-to-noise ratio in the summary statistics previously measured was high,
 no study explored a possible trend as a function of galaxy properties, like colors or star formation rate."
 This is not quite true, especially since the authors themselves mention the connection between the profile and cross-correlations in the same paragraph.
 Relevant studies in a similar cluster mass range, but with different selections, include
@@ -69,3 +81,6 @@ https://ui.adsabs.harvard.edu/abs/2017ApJ...841...18B/abstract.
 
 Answer:
 Apologies for missing these references, we added them to the introduction and amended the text.
+
+-----------------------------------------------
+We would like to thank the referee for the constructive comments on the article, it was much appreciated.
